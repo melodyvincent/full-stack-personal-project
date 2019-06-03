@@ -1,0 +1,194 @@
+import axios from 'axios';
+
+const initialState = {
+    user: {},
+    lat: 0,
+    lng: 0,
+    address: '',
+    buildingType: '',
+    spaceType: '',
+    numSpace: 0,
+    spaceQuantity: 0,
+    spaceSize: '',
+    description: '',
+    instructions: '',
+    streetView: '',
+    covered: false,
+    lit: false,
+    charging: false,
+    camera: false,
+    fenced: false,
+    guarded: false,
+    cash: false,
+    credit: false,
+    venmo: false,
+    paypal: false,
+    applePay: false,
+    monday: false,
+    tuesday: false,
+    wednesday: false,
+    thursday: false,
+    friday: false,
+    saturday: false,
+    sunday: false,
+    picOne: null,
+    picTwo: null,
+    picThree: null,
+    picFour: null,
+    rate: 0,
+    currentListing: {}
+}
+
+const GET_USER_DATA = "GET_USER_DATE";
+const UPDATE_WIZ_LAT = "UPDATE_WIZ_LAT";
+const UPDATE_WIZ_LNG = "UPDATE_WIZ_LNG";
+const UPDATE_WIZ_ADDRESS = "UPDATE_WIZ_ADDRESS";
+const UPDATE_WIZ_BUILDING_TYPE = "UPDATE_WIZ_BUILDING_TYPE";
+const UPDATE_WIZ_SPACE_TYPE = "UPDATE_WIZ_SPACE_TYPE";
+const UPDATE_WIZ_SPACE_QUANTITY = "UPDATE_WIZ_SPACE_QUANTITY";
+const UPDATE_WIZ_SPACE_SIZE = "UPDATE_WIZ_SPACE_SIZE";
+const UPDATE_WIZ_DESCRIPTION = "UPDATE_WIZ_DESCRIPTION";
+const UPDATE_WIZ_INSTRUCTIONS = "UPDATE_WIZ_INSTRUCTIONS";
+const UPDATE_WIZ_STREET_VIEW = "UPDATE_WIZ_STREET_VIEW"
+const UPDATE_WIZ_COVERED = "UPDATE_WIZ_COVERED";
+const UPDATE_WIZ_LIT = "UPDATE_WIZ_LIT";
+const UPDATE_WIZ_CHARGING = "UPDATE_WIZ_CHARGING";
+const UPDATE_WIZ_CAMERA = "UPDATE_WIZ_CAMERA";
+const UPDATE_WIZ_FENCED = "UPDATE_WIZ_FENCED";
+const UPDATE_WIZ_GUARDED = "UPDATE_WIZ_GUARDED";
+const UPDATE_WIZ_CASH = "UPDATE_WIZ_CASH";
+const UPDATE_WIZ_CREDIT = "UPDATE_WIZ_CREDIT";
+const UPDATE_WIZ_VENMO = "UPDATE_WIZ_VENMO";
+const UPDATE_WIZ_PAYPAL = "UPDATE_WIZ_PAYPAL";
+const UPDATE_WIZ_APPLE_PAY = "UPDATE_WIZ_APPLE_PAY";
+const UPDATE_WIZ_MONDAY = "UPDATE_WIZ_MONDAY";
+const UPDATE_WIZ_TUESDAY = "UPDATE_WIZ_MONDAY";
+const UPDATE_WIZ_WEDNESDAY = "UPDATE_WIZ_WEDNESDAY";
+const UPDATE_WIZ_THURSDAY = "UPDATE_WIZ_THURSDAY";
+const UPDATE_WIZ_FRIDAY = "UPDATE_WIZ_FRIDAY";
+const UPDATE_WIZ_SATURDAY = "UPDATE_WIZ_SATURDAY";
+const UPDATE_WIZ_SUNDAY = "UPDATE_WIZ_SUNDAY";
+const UPDATE_WIZ_PIC_ONE = "UPDATE_WIZ_PIC_ONE";
+const UPDATE_WIZ_RATE = "UPDATE_WIZ_RATE";
+const UPDATE_CURRENT_LISTING = "UPDATE_CURRENT_LISTING";
+const UPDATE_WIZ_PIC_TWO = "UPDATE_WIZ_PIC_TWO";
+const UPDATE_WIZ_PIC_THREE = "UPDATE_WIZ_PIC_THREE";
+const UPDATE_WIZ_PIC_FOUR = "UPDATE_WIZ_PIC_FOUR";
+
+
+export default function reducer(state = initialState, action) {
+
+    switch (action.payload) {
+        case GET_USER_DATA + '_FULFILLED':
+            return Object.assign({},state, {user: action.payload});
+        
+            case UPDATE_WIZ_LAT:
+            return Object.assign({}, state, { lat: action.payload });
+
+        case UPDATE_WIZ_LNG:
+            return Object.assign({}, state, { lng: action.payload });
+
+        case UPDATE_WIZ_ADDRESS:
+            return Object.assign({}, state, { address: action.payload });
+
+        case UPDATE_WIZ_BUILDING_TYPE:
+            return Object.assign({}, state, { buildingType: action.payload });
+
+        case UPDATE_WIZ_SPACE_TYPE:
+            return Object.assign({}, state, { spaceType: action.payload });
+
+        case UPDATE_WIZ_SPACE_QUANTITY:
+            return Object.assign({}, state, { spaceQuantity: action.payload });
+
+        case UPDATE_WIZ_SPACE_SIZE:
+            return Object.assign({}, state, { spaceSize: action.payload });
+
+        case UPDATE_WIZ_DESCRIPTION:
+            return Object.assign({}, state, { description: action.payload });
+
+        case UPDATE_WIZ_INSTRUCTIONS:
+            return Object.assign({}, state, { instructions: action.payload });
+
+        case UPDATE_WIZ_STREET_VIEW:
+            return Object.assign({}, state, { streetView: action.payload });
+
+        case UPDATE_WIZ_COVERED:
+            return Object.assign({}, state, { covered: action.payload });
+
+        case UPDATE_WIZ_LIT:
+            return Object.assign({}, state, { lit: action.payload });
+
+        case UPDATE_WIZ_CHARGING:
+            return Object.assign({}, state, { charging: action.payload });
+
+        case UPDATE_WIZ_CAMERA:
+            return Object.assign({}, state, { camera: action.payload });
+
+        case UPDATE_WIZ_FENCED:
+            return Object.assign({}, state, { fenced: action.payload });
+
+        case UPDATE_WIZ_GUARDED:
+            return Object.assign({}, state, { guarded: action.payload });
+
+
+        case UPDATE_WIZ_CASH:
+            return Object.assign({}, state, { cash: action.payload });
+
+
+        case UPDATE_WIZ_CREDIT:
+            return Object.assign({}, state, { credit: action.payload });
+
+
+        case UPDATE_WIZ_VENMO:
+            return Object.assign({}, state, { venmo: action.payload });
+
+
+        case UPDATE_WIZ_PAYPAL:
+            return Object.assign({}, state, { paypal: action.payload });
+
+
+        case UPDATE_WIZ_APPLE_PAY:
+            return Object.assign({}, state, { applePay: action.payload });
+
+        case UPDATE_WIZ_MONDAY:
+            return Object.assign({}, state, { monday: action.payload });
+
+        case UPDATE_WIZ_TUESDAY:
+            return Object.assign({}, state, { tuesday: action.payload });
+
+        case UPDATE_WIZ_WEDNESDAY:
+            return Object.assign({}, state, { wednesday: action.payload });
+
+        case UPDATE_WIZ_THURSDAY:
+            return Object.assign({}, state, { thursday: action.payload });
+
+        case UPDATE_WIZ_FRIDAY:
+            return Object.assign({}, state, { friday: action.payload });
+
+        case UPDATE_WIZ_SATURDAY:
+            return Object.assign({}, state, { saturday: action.payload });
+
+        case UPDATE_WIZ_SUNDAY:
+            return Object.assign({}, state, { sunday: action.payload });
+
+        case UPDATE_WIZ_PIC_ONE:
+            return Object.assign({}, state, { picOne: action.payload });
+
+        case UPDATE_WIZ_RATE:
+            return Object.assign({}, state, { rate: action.payload });
+
+        case UPDATE_CURRENT_LISTING:
+            return Object.assign({}, state, { currentListing: action.payload });
+
+        case UPDATE_WIZ_PIC_TWO:
+            return Object.assign({}, state, { picTwo: action.payload });
+
+        case UPDATE_WIZ_PIC_THREE:
+            return Object.assign({}, state, { picThree: action.payload });
+
+        case UPDATE_WIZ_PIC_FOUR:
+            return Object.assign({}, state, { picFour: action.payload });
+        default:
+            return state;
+    }
+}
