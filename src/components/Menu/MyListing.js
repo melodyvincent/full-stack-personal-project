@@ -6,3 +6,5 @@ import './myListing.css'
 class MyListing extends Component {
     
 }
+
+export default MyListing;

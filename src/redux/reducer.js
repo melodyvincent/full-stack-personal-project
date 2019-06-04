@@ -192,3 +192,256 @@ export default function reducer(state = initialState, action) {
             return state;
     }
 }
+
+export function getUser(){
+    let userData = axios.get('/auth/user').then(res => res.data);
+    return {
+        type: GET_USER_DATA,
+        payload: userData
+    }
+}
+
+    export function updateWizlat(lat) {
+        return{
+            type: UPDATE_WIZ_LAT,
+            payload: lat
+        }
+    }
+
+    export function updateWizlng(lng) {
+        return{
+            type: UPDATE_WIZ_LNG,
+            payload: lng
+        }
+    }
+
+    export function updateWizAddress(address) {
+        return {
+            type: UPDATE_WIZ_ADDRESS,
+            payload: address
+        }
+    }
+
+    export function updateWizBuildingType(building_type) {
+        return{
+            type: UPDATE_WIZ_BUILDING_TYPE,
+            payload: building_type
+        }
+    }
+
+    export function updateWizSpaceType(spaceType) {
+        return{
+            type: UPDATE_WIZ_SPACE_TYPE,
+            payload: spaceType 
+        }
+    }
+    
+    export function updateWizSpaceQuantity(spaceQuantity) {
+        return{
+            type: UPDATE_WIZ_SPACE_QUANTITY,
+            payload: spaceQuantity 
+        }
+    }
+
+    export function updateWizSpaceSize(spaceSize){
+        return{
+            type: UPDATE_WIZ_SPACE_SIZE,
+            payload: spaceSize
+        }
+    }
+
+    export function updateWizDescription(description) {
+        return{
+            type: UPDATE_WIZ_DESCRIPTION,
+            payload: description
+        }
+    }
+
+    export function updateWizInstruction(instructions) {
+        return{
+            type: UPDATE_WIZ_INSTRUCTIONS,
+            payload: instructions
+        }
+    }
+
+    export function updateWizStreetView(streetView) {
+        return{
+            type: UPDATE_WIZ_STREET_VIEW,
+            payload: streetView
+        }
+    }
+
+    export function updateWizeCovered(covered){
+        return{
+            type: UPDATE_WIZ_COVERED,
+            payload: covered
+        }
+    }
+
+    export function updateWizLit(lit) {
+        return {
+            type: UPDATE_WIZ_LIT,
+            payload: lit
+        }
+    }
+    
+    export function updateWizCharging(charging) {
+        return {
+            type: UPDATE_WIZ_CHARGING,
+            payload: charging
+        }
+    }
+    
+    export function updateWizCamera(camera) {
+        return {
+            type: UPDATE_WIZ_CAMERA,
+            payload: camera
+        }
+    }
+    
+    export function updateWizFenced(fenced) {
+        return {
+            type: UPDATE_WIZ_FENCED,
+            payload: fenced
+        }
+    }
+    
+    export function updateWizGuarded(guarded) {
+        return {
+            type: UPDATE_WIZ_GUARDED,
+            payload: guarded
+        }
+    }
+    
+    export function updateWizCash(cash) {
+        return {
+            type: UPDATE_WIZ_CASH,
+            payload: cash
+        }
+    }
+    
+    export function updateWizCredit(credit) {
+        return {
+            type: UPDATE_WIZ_CREDIT,
+            payload: credit
+        }
+    }
+    
+    export function updateWizVenmo(venmo) {
+        return {
+            type: UPDATE_WIZ_VENMO,
+            payload: venmo
+        }
+    }
+    
+    export function updateWizPaypal(paypal) {
+        return {
+            type: UPDATE_WIZ_PAYPAL,
+            payload: paypal
+        }
+    }
+    
+    export function updateWizApplePay(applePay) {
+        return {
+            type: UPDATE_WIZ_APPLE_PAY,
+            payload: applePay
+        }
+    }
+    
+    export function updateWizMonday(monday) {
+        return {
+            type: UPDATE_WIZ_MONDAY,
+            payload: monday
+        }
+    }
+    
+    export function updateWizTuesday(tuesday) {
+        return {
+            type: UPDATE_WIZ_TUESDAY,
+            payload: tuesday
+        }
+    }
+    
+    export function updateWizWednesday(wednesday) {
+        return {
+            type: UPDATE_WIZ_WEDNESDAY,
+            payload: wednesday
+        }
+    }
+    
+    export function updateWizThursday(thursday) {
+        return {
+            type: UPDATE_WIZ_THURSDAY,
+            payload: thursday
+        }
+    }
+    
+    export function updateWizFriday(friday) {
+        return {
+            type: UPDATE_WIZ_FRIDAY,
+            payload: friday
+        }
+    }
+    
+    export function updateWizSaturday(saturday) {
+        return {
+            type: UPDATE_WIZ_SATURDAY,
+            payload: saturday
+        }
+    }
+    
+    export function updateWizSunday(sunday) {
+        return {
+            type: UPDATE_WIZ_SUNDAY,
+            payload: sunday
+        }
+    }
+    
+    export function updateWizPicOne(picOne) {
+        return {
+            type: UPDATE_WIZ_PIC_ONE,
+            payload: picOne
+        }
+    }
+    
+    export function updateWizRate(rate) {
+        return {
+            type: UPDATE_WIZ_RATE,
+            payload: rate
+        }
+    }
+    
+    export function updateCurrentListing(currentListing) {
+        return {
+            type: UPDATE_CURRENT_LISTING,
+            payload: currentListing
+        }
+    }
+    
+    export function updateWizPicTwo(picTwo) {
+        return {
+            type: UPDATE_WIZ_PIC_TWO,
+            payload: picTwo
+        }
+    }
+    
+    export function updateWizPicThree(picThree) {
+        return {
+            type: UPDATE_WIZ_PIC_THREE,
+            payload: picThree
+        }
+    }
+    
+    export function updateWizPicFour(picFour) {
+        return {
+            type: UPDATE_WIZ_PIC_FOUR,
+            payload: picFour
+        }
+    }
+    
+
+
+
+
+
+
