@@ -5,7 +5,7 @@ import 'firebase/storage'
 const { apiKey, authDomain, databaseURL, projectID, storageBucket, messagingSenderId, appId } = process.env;
 
 
-firebase.initializeApp(process.env);
+firebase.initializeApp(apiKey, authDomain, databaseURL, projectID, storageBucket, messagingSenderId, appId);
 
 const storage = firebase.storage();
 

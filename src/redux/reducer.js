@@ -257,7 +257,7 @@ export function getUser(){
         }
     }
 
-    export function updateWizInstruction(instructions) {
+    export function updateWizInstructions(instructions) {
         return{
             type: UPDATE_WIZ_INSTRUCTIONS,
             payload: instructions
@@ -271,7 +271,7 @@ export function getUser(){
         }
     }
 
-    export function updateWizeCovered(covered){
+    export function updateWizCovered(covered){
         return{
             type: UPDATE_WIZ_COVERED,
             payload: covered

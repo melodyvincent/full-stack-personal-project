@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-// import './edit_listing.css'
+import './editListing.css'
 import { Link } from 'react-router-dom'
 import Nav from '../Nav/nav'
 import checkmark_icon from './../Images/images/checkmark_icon.png'

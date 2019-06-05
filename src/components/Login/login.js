@@ -1,5 +1,5 @@
 import React from "react";
-// import './../../theme/animate.css'
+import './../../../src/animate.css'
 import ezparking from './../Images/images/parking.png'
 
 export default function Login() {

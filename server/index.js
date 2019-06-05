@@ -1,3 +1,4 @@
+require ('dotenv').config()
 const express = require("express");
 const bodyParser = require("body-parser");
 const ctrl = require("./controllers");
@@ -141,7 +142,7 @@ app.post('/api/payment', ctrl.createPayment)
 app.put('/api/payment/:id', ctrl.updatePayment)
 
 // Nodemailer Send
-app.post('/api/sendmail', ctrl.createMail)
+// app.post('/api/sendmail', ctrl.createMail)
 
 
 

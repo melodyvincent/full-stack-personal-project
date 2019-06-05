@@ -85,7 +85,7 @@ class Chat extends Component {
                     <div className="form-group">
                         <label>Message</label>
                         <textarea
-                            // className="form-control"
+                            
                             className="txtarea"
                             value={this.state.message} onChange={e => this.setState({ message: e.target.value })}
                             rows="5"
@@ -94,7 +94,7 @@ class Chat extends Component {
                     </div>
                     <button
                         type="submit"
-                        // className="btn-primary"
+                        
                         className="smallbutton"
                     >Submit</button>
                     <br />
