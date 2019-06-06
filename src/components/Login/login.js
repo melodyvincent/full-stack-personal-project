@@ -10,7 +10,9 @@ export default function Login() {
         <a
           id="loginanimation"
           className="login animated zoomInDown"
+              // href="http://localhost:4000/auth/callback"
           href="http://localhost:4000/auth/google"
+             
         >
           <img
             alt=""

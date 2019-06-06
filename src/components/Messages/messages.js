@@ -26,8 +26,8 @@ export default class Messages extends Component {
                 <Nav/>
                 <p>Messaging</p>
                 <div>
-                    <button className='smallbutton' onClick={() => { this.setState({ toggle: true }) }}>Lots Im asking about</button>
-                    <button className='smallbutton' onClick={() => { this.setState({ toggle: false }) }}>Lots Im hosting</button>
+                    <button className='smallbutton' onClick={() => { this.setState({ toggle: true }) }}>Lots I am interested in</button>
+                    <button className='smallbutton' onClick={() => { this.setState({ toggle: false }) }}>Lots Im renting out</button>
                     {this.state.toggle ? <div>{mappedmessages1}</div> : <div><p>Not a list</p></div>}
                 </div>
             </div>

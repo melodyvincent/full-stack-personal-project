@@ -39,7 +39,7 @@ export default (
     <Route path="/listings" component={Listing} />
     <Route path="/checkout" component={Checkout} />
     <Route path="/chat" component={Chat} />
-    <Route path="/myListing/edit/:id" component={EditListing} />
+    {/* <Route path="/myListing/edit/:id" component={EditListing} /> */}
   
 
 

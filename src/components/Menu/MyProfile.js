@@ -49,13 +49,15 @@ class MyProfile extends Component {
               <div>
                 <img alt='' src={this.props.user.user_pic} style={{ height: "130px", borderRadius: "50%", margin: '20px auto 50px auto', display: 'block' }} />
               </div>
-              <p>Name: {this.props.user.username}</p>
+              {/* <p>Name: {this.props.user.username}</p>
+              <hr /> */}
+              Name: <input type="username" className="input" name="username" value={this.state.username} onChange={e => { this.handleChange(e) }} />
               <hr />
               Username: <input type="username" className="input" name="username" value={this.state.username} onChange={e => { this.handleChange(e) }} />
               <hr />
               Email: <input type="email" className="input" name="email" value={this.state.email} onChange={e => { this.handleChange(e) }} />
               <hr />
-              Phonenumber: <input type="phonenumber" className="input" name="phonenumber" value={this.state.phonenumber} onChange={e => { this.handleChange(e); }} />
+              Phone Number: <input type="phonenumber" className="input" name="phonenumber" value={this.state.phonenumber} onChange={e => { this.handleChange(e); }} />
               <hr />
               <div>
                 <img src={cancel_icon} alt='' onClick = {() => {this.handleEdit()}} style={{height:'27px'}}/>
@@ -73,7 +75,7 @@ class MyProfile extends Component {
                 <hr/>
                 <div>Email:</div>
                 <hr/>
-                <div>Phonenumber:</div>
+                <div>Phone Number:</div>
                 <hr/>
                 <img style={{height: '22px'}} onClick = {() => {this.handleEdit()}} src={edit_icon} alt=''/>
               </div> 

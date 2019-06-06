@@ -57,6 +57,7 @@ import mylistings_icon_white from './../Images/images/listing_icon_white.png'
                     <div onClick = {this.handlePopup} className = {this.state.popup ? 'barbox barbox1' : 'barbox'}>
                         <div className = {this.state.popup ? 'bar bar1' : 'bar'}></div> 
                         <div className = {this.state.popup ? 'bar bar2' : 'bar'}></div> 
+                        
                     </div>
                 </div >
                 <popup handlePopup={this.state.popup} />

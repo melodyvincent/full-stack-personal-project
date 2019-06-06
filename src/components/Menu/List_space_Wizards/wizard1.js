@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import './wizard.css'
-import cancel_icon from './../../../redux/reducer'
+import cancel_icon from './../../Images/images/cancel_icon.png'
 import rightarrow_icon from './../../Images/images/rightarrow_icon.png'
 import leftarrow_icon from './../../Images/images/leftarrow_icon.png'
 import {updateWizBuildingType} from './../../../redux/reducer'

@@ -451,7 +451,7 @@ class MyVehicle extends Component {
                 />
               </p>
               <br />
-              <p className="ptag">Size: (click on a icon button)</p>
+              <p className="ptag">Size: (click on an icon button)</p>
               <br />
               <div style={{ padding: "10px" }}>
                 <img
