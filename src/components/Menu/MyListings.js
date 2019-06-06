@@ -23,7 +23,7 @@ import camera_icon_off from './../Images/images/camera_iconoff.png'
 import fenced_icon_off from './../Images/images/fenced_icon_off.png'
 import police_icon_off from './../Images/images/police_iconoff.png'
 
-class Mylistings extends Component {
+class MyListings extends Component {
     constructor() {
         super()
         this.state = {
@@ -191,4 +191,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { getUser })(Mylistings);
+export default connect(mapStateToProps, { getUser })(MyListings);

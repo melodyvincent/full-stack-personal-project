@@ -1,1 +1,442 @@
 
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+:root{
+  /* MAIN APP */
+  /* --appbackgroundcolor: rgb(237, 237, 237); */
+  --appbackgroundcolor: rgb(255, 255, 255);
+  --appfontcolor: black;
+  --background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+  --appgradient: linear-gradient(rgb(43, 43, 43), rgb(70, 70, 70));
+  --bordercolor: 0px 0px 0px 3px rgba(0, 130, 252, 0.877);
+  --cardboxshadow: 0px 1px 5px 1px rgb(182, 182, 182);
+
+  
+  
+  /* LOGIN PAGE */
+  /* --logingradient: radial-gradient(circle, rgba(0, 130, 252, 0.877),black 80%); */
+  --logingradient:  linear-gradient(to right, #d7d2cc 0%, #304352 100%);
+  /* BUTTONS */
+  --buttonbackgroundcolor: rgb(43, 43, 43);
+  
+  /* POPUP */
+  --popupbackgroundcolor:  #0082fc;
+}
+
+/* THIS IS THE RESET FOR THE FORMAT OF A PAGE */
+.reset{
+  height: 100%;
+  padding-top: 10px;
+  padding-bottom: 70px;
+  background: var(--appbackgroundcolor);
+}
+
+/* MAIN APP CSS */
+.App {
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+  color: var(--appfontcolor);
+  font-size: 20px;
+}
+h1{
+  /* box-shadow: 0 1px 5px rgb(194, 194, 194); */
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 20px;
+  text-align: center;
+}
+.input{
+  border-top: none;
+  height: 20px;
+  width: 82%;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  outline: none;
+  margin: 10px;
+  box-shadow: 0px 0px 5px 1px rgb(190, 190, 190);
+  padding: 8px;
+}
+p .input{
+  border-top: none;
+  height: 20px;
+  width: 82%;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  outline: none;
+  box-shadow: 0px 0px 5px 1px rgb(211, 211, 211);
+}
+.input:focus{
+  box-shadow: var(--bordercolor);
+}
+
+.txtarea{
+  border-top: none;
+  height: 100px;
+  width: 82%;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  outline: none;
+  margin: 10px;
+  box-shadow: 0px 0px 5px 1px rgb(211, 211, 211);
+}
+
+
+
+
+.bigbutton{
+  color: black;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 0px 0px 0px;
+  font-size: 20px;
+  width: 75%;
+  margin: 10px 0 10px 0;
+  background:linear-gradient( 0.2deg,  rgba(79,104,112,1) -13.8%, rgba(177,234,252,1) 100.2% );
+}
+.bigbutton:active{
+  box-shadow: var(--bordercolor)
+}
+.smallbutton{
+  border: none;
+  outline: none;
+  color: white;
+  margin: 7px;
+  font-size: 13px;
+  padding: 7px;
+  border-radius: 5px;
+  width: 150px;
+  box-shadow: 0px 0px 0px 0px;
+  background: var(--appgradient);
+}
+.smallbutton:focus{
+  box-shadow: var(--bordercolor);
+}
+.smallbutton:active{
+  box-shadow: var(--bordercolor);
+}
+.roundbutton{
+  border: none;
+  outline: none;
+  color: white;
+  margin: 5px;
+  font-size: 13px;
+  padding: 12px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0px 0px 0px 0px;
+  background: var(--appgradient);
+}
+.roundbutton:active{
+  box-shadow: var(--bordercolor);
+}
+.buttoncheckmark{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.checkmark{
+  height: 20px;
+  width:20px;
+  position: absolute;
+  right: 120px;
+}
+.card{
+  box-shadow: 0px 1px 5px 1px rgb(182, 182, 182);
+  margin: 20px auto 20px auto;
+  padding: 20px;
+  width: 80%;
+  text-align: left;
+  bcolor:linear-gradient( 0.2deg,  rgba(79,104,112,1) -13.8%, rgba(177,234,252,1) 100.2% );
+}
+
+/* LOGIN PAGE */
+.loginmain{
+  height: 90vh;
+  display: flex;
+  background:var(--logingradient);
+  align-content: center;
+}
+.login{
+  margin: auto;
+  background: white;
+  border-radius: 5px;
+}
+
+
+/* POPUP CSS */
+.iconholder{
+  background: var(--popupbackgroundcolor);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: 0 5px 20px rgb(77, 77, 77);
+}
+
+.icon1{
+  position: fixed;
+  top: 78%;
+  left: 78%;
+  animation-delay: 0.1s;
+}
+.icon2{
+  position: fixed;
+  top: 64%;
+  left: 78%;
+  animation-delay: 0.2s;
+}
+.icon3{
+  position: fixed;
+  top: 50%;
+  left: 78%;
+  animation-delay: 0.3s;
+}
+.popupicon{
+  height: 35px;
+}
+.popup{
+  height: 50%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  background: var(--popupbackgroundcolor);
+}
+.popupbutton{
+  border-radius: 5px;
+  height: 40px;
+  width: 215px;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 20px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-decoration: none;
+  letter-spacing: 2px;
+  color: white;
+  background: var(--appgradient);
+}
+
+.hidden{
+  display: none;
+}
+
+/* NAV CSS */
+.nav{
+  height: 55px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  z-index: 4;
+  background:  linear-gradient( 0.2deg,  rgba(79,104,112,1) -13.8%, rgba(177,234,252,1) 100.2% );
+}
+.size{
+  height: 45px;
+	width: 45px;
+	padding: 3px 10px 3px 10px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2px;
+}
+.barbox {
+  margin-top: 17px;
+  float: right;
+  transition: 0.3s;
+  height: 20px;
+}
+.bar {
+  background-color: black;
+  height: 4px;
+  width: 35px;
+  border-radius: 3px;
+  margin-top: 4px;
+  transition: 0.1s 0.3s;
+}
+.barbox1 {
+  transform: rotate(90deg);
+  /* margin: 0 */
+}
+.bar1 {
+  transform: rotate(45deg) translate(3.5px,4px);
+  background: red;
+}
+.bar2 {
+  transform: rotate(-45deg) translate(1.5px, -2px);
+  background: red;
+}
+
+
+/* WIZARD NAV */
+.wizardnav{
+  margin-top: 50%;
+}
+/* WIZARDS */
+.wizard{
+  /* display:flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+/* SEARCH */
+.search{
+  background: var(--popupbackgroundcolor);
+  outline: none;
+  border: 1px solid transparent;
+  color:black;
+  /* position: fixed; */
+  top: 0px;
+  left: 0;
+  height: 40px;
+  width: 94vw;
+  padding: 0 10px 0 10px;
+  overflow: hidden;
+}
+.search::placeholder{
+  color: rgb(221, 221, 221);
+}
+.searchcard{
+  box-shadow: 0px 1px 5px 1px rgb(182, 182, 182);
+  padding: 0 20px 0 20px;
+  width: 335px;
+  height: 175px;
+  background: rgb(216, 216, 216);
+  font-size: 15px;
+}
+/* MY VEHICLES */
+
+.carpic{
+  height: 150px;
+  margin: 10px auto 20px auto;
+  display:block;
+  position:relative;
+  box-shadow: var(--cardboxshadow);
+}
+#addimageicon{
+  height: 100px;
+  margin: 10px auto 20px auto;
+  display:block;
+  position:relative;
+}
+.ptag{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* MY LISTINGS */
+.mylistingicon{
+  height: 60px;
+}
+.grid{
+  display: grid;
+  justify-content: center;
+  grid-template-columns: auto auto auto;
+  grid-column-gap: 10%;
+  grid-row-gap: 5px;
+}
+.featureicon{
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* EDIT LISTING */
+.divwithcheck{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 22px;
+  font-weight: bold;
+}
+.small-font {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 18px;
+}
+
+.invisible {
+  /* visibility: hidden; */
+  color: lightgray
+}
+.visible {
+  visibility: visible;
+}
+.simple-border {
+  border: 1px solid gray;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+/* CHECKOUT */
+
+.dropdownselect{
+  border: none;
+    background: white;
+    width: 100%;
+    height: 40px;
+    outline: none;
+
+}

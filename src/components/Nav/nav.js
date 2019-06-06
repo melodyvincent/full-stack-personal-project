@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import popup from './popup'
+import Popup from './Popup'
 import reservations_icon_blue from './../Images/images/reservations_icon_blue.png'
 import reservations_icon_white from './../Images/images/reservations_icon_white.png'
-import search_icon_blue from './../Images/images/search_icon_blue.png'
+import search_icon_black from './../Images/images/search_icon_black.png'
 import search_icon_white from './../Images/images/search_icon_white.png'
 import mylistings_icon_blue from './../Images/images/listing_icon_blue.png'
 import mylistings_icon_white from './../Images/images/listing_icon_white.png'
@@ -37,7 +37,7 @@ import mylistings_icon_white from './../Images/images/listing_icon_white.png'
                 <div className='nav'>
 
                 {window.location.href.includes('/search') ? 
-                    <Link to='/search'><img alt='' src={search_icon_blue} className='size'/></Link>
+                    <Link to='/search'><img alt='' src={search_icon_black} className='size'/></Link>
                   :
                     <Link to='/search'><img alt='' src={search_icon_white} className='size'/></Link>
                 }

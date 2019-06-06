@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import {connect} from 'react-redux'
-import axios from 'axios'
-import {getUser} from './../../redux/reducer'
-import {Link} from 'react-router-dom'
+import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import axios from 'axios';
+import {getUser} from '../../redux/reducer';
+import {Link} from 'react-router-dom';
 
 class Chat extends Component {
     constructor(props) {
@@ -21,13 +21,14 @@ class Chat extends Component {
 
     componentDidMount() {
         const { host_id } = this.props.currentListing;
-        this.props.getUser().then(
-            this.setState({
-                logged_user_name: '',
-                logged_user_email: '',
+        console.log(this.props)
+        const user = this.props.getUser()
+        console.log(user)
+            // this.setState({
+            //     logged_user_name: '',
+            //     logged_user_email: '',
 
-            })
-        )
+            // })
         axios.get(`/api/host/${host_id}`).then(res => {
             this.setState({ host: res.data[0] })
         })
@@ -85,7 +86,7 @@ class Chat extends Component {
                     <div className="form-group">
                         <label>Message</label>
                         <textarea
-                            
+                            // className="form-control"
                             className="txtarea"
                             value={this.state.message} onChange={e => this.setState({ message: e.target.value })}
                             rows="5"
@@ -94,7 +95,7 @@ class Chat extends Component {
                     </div>
                     <button
                         type="submit"
-                        
+                        // className="btn-primary"
                         className="smallbutton"
                     >Submit</button>
                     <br />

@@ -5,6 +5,7 @@ import DatePicker from 'react-datepicker'
 import moment from 'moment'
 import {connect} from 'react-redux'
 import 'react-datepicker/dist/react-datepicker.css'
+import 'react-datepicker/dist/react-datepicker-cssmodules.css'
 import left_arrow_icon from './../Images/images/leftarrow_icon.png'
 
 class Checkout extends Component {

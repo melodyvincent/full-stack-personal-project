@@ -175,33 +175,33 @@ module.exports = {
             .then(() => res.status(200).send())
             .catch(() => res.status(500).send())
     },
-    // // Added for nodemailer
-    // createMail: (req, res) => {
-    //     console.log('creatMail ', req.body)
+    // Added for nodemailer
+    createMail: (req, res) => {
+        console.log('creatMail ', req.body)
 
-    //     const transporter = nodemailer.createTransport({
-    //         service: 'gmail',
-    //         auth: {
-    //             user: process.env.EMAIL,
-    //             pass: process.env.PASSWORD
-    //         }
-    //     });
-    //     var mailOptions = {
-    //         from: process.env.EMAIL,
-    //         from: req.body.emailFrom,
-    //         to: req.body.emailTo,
-    //         subject: req.body.subject,
-    //         html: `${req.body.message} <br /> <br /> - from ${req.body.name} <br /> ${req.body.emailFrom}`
-    //     };
-    //     transporter.sendMail(mailOptions, function (error, info) {
-    //         if (error) {
-    //             console.log(error);
-    //         } else {
-    //             console.log('Email sent: ' + info.response);
-    //         }
-    //     })
-    //     res.status(200).send()
-    // },
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.EMAIL,
+                pass: process.env.PASSWORD
+            }
+        });
+        var mailOptions = {
+            from: process.env.EMAIL,
+            from: req.body.emailFrom,
+            to: req.body.emailTo,
+            subject: req.body.subject,
+            html: `${req.body.message} <br /> <br /> - from ${req.body.name} <br /> ${req.body.emailFrom}`
+        };
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        })
+        res.status(200).send()
+    },
 
 
     //UPDATE CONTROLLERS

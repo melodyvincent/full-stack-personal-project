@@ -1,0 +1,61 @@
+import React, { Component } from "react";
+import { fireBaseApp } from "../Firebase/index";
+
+class Register extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      email: "",
+      password: ""
+    };
+  }
+
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+
+  onSubmit = async event => {
+    event.preventDefault();
+    const { email, password } = this.state;
+    fireBaseApp
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(userInfo => {
+        console.log(userInfo);
+      });
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>Sign up</h1>
+        <form onSubmit={this.onSubmit}>
+          <label>
+            Email
+            <input
+              name="email"
+              type="email"
+              placeholder="Email"
+              onChange={this.handleChange}
+            />
+          </label>
+          <label>
+            Password
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              onChange={this.handleChange}
+            />
+          </label>
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
+    );
+  }
+}
+
+export default Register;

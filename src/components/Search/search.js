@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Map from './../Map/map'
-import Nav from './../Nav/nav';
+import Map from '../Map/Map'
+import Nav from '../Nav/Nav';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { getUser } from './../../redux/reducer'
+import { getUser } from '../../redux/reducer'
 
 class Search extends Component {
 

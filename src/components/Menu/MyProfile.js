@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { getUser } from './../../redux/reducer'
-import Nav from "./../Nav/nav";
+import Nav from "../Nav/Nav";
 import axios from 'axios'
 
 import edit_icon from './../Images/images/edit_icon.png'
@@ -10,7 +10,7 @@ import cancel_icon from './../Images/images/cancel_icon.png'
 import upload_icon from './../Images/images/upload_icon.png'
 
 
-class Myprofile extends Component {
+class MyProfile extends Component {
   constructor(props) {
     super(props);
 
@@ -91,5 +91,5 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { getUser })(Myprofile);
+export default connect(mapStateToProps, { getUser })(MyProfile);
 

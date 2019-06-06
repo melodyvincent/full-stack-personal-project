@@ -128,7 +128,7 @@ class Map extends Component {
                     <p style={{float:'left'}}>Price: </p>
                     <p style={{float:'right'}}>${this.state.currentListing.price && this.state.currentListing.price.toFixed(2)}</p>
                 </div> 
-                <Link to = "/listing">
+                <Link to = "/listings">
                 <button className='smallbutton'style={{margin:'0 0 10px 0'}} onClick ={(e) => {this.handleDetails()}}>Details</button>
                 </Link>
             </div>

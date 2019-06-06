@@ -39,6 +39,14 @@ const initialState = {
     currentListing: {}
 }
 
+// const initialState = {
+//     username: '',
+//     firstname: '',
+// }
+
+// const UPDATE_USER = 'UPDATE_USER'
+// const CLEAR_USER = 'CLEAR_USER'
+
 const GET_USER_DATA = "GET_USER_DATE";
 const UPDATE_WIZ_LAT = "UPDATE_WIZ_LAT";
 const UPDATE_WIZ_LNG = "UPDATE_WIZ_LNG";
@@ -190,6 +198,8 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { picFour: action.payload });
         default:
             return state;
+        
+        
     }
 }
 

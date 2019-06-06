@@ -7,8 +7,7 @@
 }
 .IconSearch {
     position: absolute;
-    /* width: 50%; */
-    /* margin: 0 auto; */
+   
     left: 25px;
     top: 15px;
     z-index: 1;
@@ -16,7 +15,7 @@
 }
 
 .image-container-chat {
-    /* border: 1px solid lightcoral; */
+
     display: flex;
     flex-direction: column;
     position: relative;
@@ -24,14 +23,12 @@
     justify-content: center;
 }
 .IconChat {
-    /* border: 1px solid yellow; */
+   
     position: absolute;
-    /* margin: 0 auto; */
     max-width: 50%;
-    /* left: 25px; */
-    /* top: 15px; */
+   
     z-index: 1;
-    /* grid-area: chat; */
+   
 }
 
 .image-container-schedule {
@@ -43,8 +40,6 @@
 }
 .IconSchedule {
     position: absolute;
-    /* width: 50%; */
-    /* margin: 0 auto; */
     left: 25px;
     top: 15px;
     z-index: 1;
@@ -60,8 +55,7 @@
 }
 .IconMenu {
     position: absolute;
-    /* width: 50%; */
-    /* margin: 0 auto; */
+    
     left: 25px;
     top: 15px;
     z-index: 1;
@@ -70,9 +64,3 @@
 
 
 
-/* img {
-    border: 1px solid lightgreen;
-    height: 50px;
-    width: 70px;
-    padding: 4px 5px;
-} */
