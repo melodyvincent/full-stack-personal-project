@@ -7,7 +7,7 @@ import Messages from "./components/Messages/Messages";
 import Reservations from "./components/Reservations/Reservation";
 import MyVehicle from "./components/Menu/MyVehicle";
 import MyProfile from "./components/Menu/MyProfile";
-import MyListing from "./components/Listing/Listing";
+import MyListing from "./components/Menu/MyListings";
 import Listing from "./components/Listing/Listing";
 import Checkout from "./components/Checkout/Checkout";
 import Chat from "./components/Chat/Chat";
@@ -35,7 +35,7 @@ export default (
     <Route path="reservations" component={Reservations} />
     <Route path="/myvehicle" component={MyVehicle} />
     <Route path="/myprofile" component={MyProfile} />
-    <Route path="mylistings" component={MyListing} />
+    <Route path="/MyListings" component={MyListing} />
     <Route path="/listings" component={Listing} />
     <Route path="/checkout" component={Checkout} />
     <Route path="/chat" component={Chat} />

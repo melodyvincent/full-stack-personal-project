@@ -9,7 +9,7 @@ export default function Login() {
       <div className="reset loginmain">
         <a
           id="loginanimation"
-          className="login animated zoomInDown"
+          className="login animated slideOutDown"
               // href="http://localhost:4000/auth/callback"
           href="http://localhost:4000/auth/google"
              

@@ -2,28 +2,28 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Nav from '../Nav/Nav'
-import './my_listings.css'
+import './MyListing.css'
 import { connect } from 'react-redux';
-import { getUser } from '../../ducks/reducer';
+import { getUser } from '../../redux/reducer';
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
-import covered_parking_icon from './../Images/images/covered_parking_icon.png'
-import lit_icon from './../Images/images/lit_icon.png'
-import charging_icon from './../Images/images/charging_icon.png'
-import camera_icon from './../Images/images/camera_icon.png'
-import fenced_icon from './../Images/images/fenced_icon.png'
-import police_icon from './../Images/images/police_icon.png'
-import delete_icon from './../Images/images/delete_icon.png'
-import edit_icon from './../Images/images/delete_icon.png'
-import covered_parking_icon_off from './../Images/images/covered_parking_iconoff.png'
-import lit_icon_off from './../Images/images/lit_icon_off'
-import charging_icon_off from './../Images/images/charging_iconoff.png'
-import camera_icon_off from './../Images/images/camera_iconoff.png'
-import fenced_icon_off from './../Images/images/fenced_icon_off.png'
-import police_icon_off from './../Images/images/police_iconoff.png'
+import covered_parking_icon from '../Images/images/covered_parking_icon.png'
+import lit_icon from '../Images/images/lit_icon.png'
+import charging_icon from '../Images/images/charging_icon.png'
+import camera_icon from '../Images/images/camera_icon.png'
+import fenced_icon from '../Images/images/fenced_icon.png'
+import police_icon from '../Images/images/police_icon.png'
+import delete_icon from '../Images/images/delete_icon.png'
+import edit_icon from '../Images/images/delete_icon.png'
+import covered_parking_iconoff from '../Images/images/covered_parking_iconoff.png'
+import lit_icon_off from '../Images/images/lit_icon_off.png'
+import charging_icon_off from '../Images/images/charging_iconoff.png'
+import camera_icon_off from '../Images/images/camera_icon_off.png'
+import fenced_icon_off from '../Images/images/fenced_icon_off.png'
+import police_icon_off from '../Images/images/police_iconoff.png'
 
-class MyListings extends Component {
+class MyListing extends Component {
     constructor() {
         super()
         this.state = {
@@ -41,15 +41,15 @@ class MyListings extends Component {
     }
 
     componentDidMount() {
-        this.props.getUser().then(() => {
-
+        // this.props.getUser() 
+        console.log(this.props.user)
             axios.get(`/api/userlisting/${this.props.user.id}`).then(res => {
                 this.setState({ 
                     mylistings: res.data, 
                     isLoading: false
                 })
             })
-        });
+        
     }
 
     getPicArray(listing) {
@@ -84,6 +84,7 @@ class MyListings extends Component {
 
 
     render() {
+        console.log(this.props)
 
         let mappedlistings = this.state.mylistings.map((listing, i) => {
             let pictures = this.getPicArray(listing)
@@ -124,8 +125,8 @@ class MyListings extends Component {
                         <div className='grid'>
                             <div>
                                 {listing.covered ?
-                                    <div className='featureicon'><img alt='' src={coverd_parking_icon} className='mylistingicon' />Covered</div>
-                                    : <div className='featureicon'><img alt='' src={coverd_parking_icon_off} className='mylistingicon' />Covered</div>}
+                                    <div className='featureicon'><img alt='' src={covered_parking_icon} className='mylistingicon' />Covered</div>
+                                    : <div className='featureicon'><img alt='' src={covered_parking_iconoff} className='mylistingicon' />Covered</div>}
                             </div>
                             <div>
                                 {listing.lit ?
@@ -144,8 +145,8 @@ class MyListings extends Component {
                             </div>
                             <div>
                                 {listing.fenced ?
-                                    <div className='featureicon'><img alt='' src={fence_icon} className='mylistingicon' />Fenced</div>
-                                    : <div className='featureicon'><img alt='' src={fence_icon_off} className='mylistingicon' />Fenced</div>}
+                                    <div className='featureicon'><img alt='' src={fenced_icon} className='mylistingicon' />Fenced</div>
+                                    : <div className='featureicon'><img alt='' src={fenced_icon_off} className='mylistingicon' />Fenced</div>}
                             </div>
                             <div>
                                 {listing.guarded ?
@@ -185,10 +186,7 @@ class MyListings extends Component {
 }
 
 function mapStateToProps(state) {
-    const { user } = state;
-    return {
-        user: user
-    }
+    return state
 }
 
-export default connect(mapStateToProps, { getUser })(MyListings);
+export default connect(mapStateToProps, { getUser })(MyListing);

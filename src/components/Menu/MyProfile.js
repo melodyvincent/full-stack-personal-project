@@ -49,10 +49,10 @@ class MyProfile extends Component {
               <div>
                 <img alt='' src={this.props.user.user_pic} style={{ height: "130px", borderRadius: "50%", margin: '20px auto 50px auto', display: 'block' }} />
               </div>
-              {/* <p>Name: {this.props.user.username}</p>
-              <hr /> */}
-              Name: <input type="username" className="input" name="username" value={this.state.username} onChange={e => { this.handleChange(e) }} />
+              <p>Name: {this.props.user.username}</p>
               <hr />
+              {/* Name: <input type="name" className="input" name="name" value={this.state.username} onChange={e => { this.handleChange(e) }} />
+              <hr /> */}
               Username: <input type="username" className="input" name="username" value={this.state.username} onChange={e => { this.handleChange(e) }} />
               <hr />
               Email: <input type="email" className="input" name="email" value={this.state.email} onChange={e => { this.handleChange(e) }} />

@@ -60,7 +60,7 @@ import mylistings_icon_white from './../Images/images/listing_icon_white.png'
                         
                     </div>
                 </div >
-                <popup handlePopup={this.state.popup} />
+                <Popup handlePopup={this.state.popup} />
             </div >
         )
     }

@@ -15,12 +15,14 @@ class Map extends Component {
             map: null,
             searchBox: null,
             center: {
-                lat: 40.4385,
-                lng: 111.8927
+ 
+                lat: 40.391617,
+                lng: 	-111.850769
             }
         }
     }
 
+    
 
     mapMoved() {
         console.log('mapMoved: ' + JSON.stringify(this.state.map.getCenter()))
@@ -84,7 +86,7 @@ class Map extends Component {
                 <input
                     type="text"
                     placeholder="Search"
-                    className='search'
+                    className='TEST'
                 />
                 </StandaloneSearchBox>
                 <GoogleMap

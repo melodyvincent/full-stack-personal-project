@@ -51,6 +51,10 @@ table {
   --appbackgroundcolor: rgb(255, 255, 255);
   --appfontcolor: black;
   --background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+  /* --background-color: #bdcad9;
+  --background-image: linear-gradient(315deg, #bdcad9 0%, #e1dada 74%); */
+
+  
   --appgradient: linear-gradient(rgb(43, 43, 43), rgb(70, 70, 70));
   --bordercolor: 0px 0px 0px 3px rgba(0, 130, 252, 0.877);
   --cardboxshadow: 0px 1px 5px 1px rgb(182, 182, 182);
@@ -73,6 +77,7 @@ table {
   padding-top: 10px;
   padding-bottom: 70px;
   background: var(--appbackgroundcolor);
+  
 }
 
 /* MAIN APP CSS */
@@ -165,7 +170,7 @@ p .input{
 .roundbutton{
   border: none;
   outline: none;
-  color: white;
+  color: black;
   margin: 5px;
   font-size: 13px;
   padding: 12px;
@@ -195,15 +200,30 @@ p .input{
   padding: 20px;
   width: 80%;
   text-align: left;
-  background-image: linear-gradient( 0.2deg,  rgba(79,104,112,1) -13.8%, rgba(177,234,252,1) 100.2% );
+  /* background-image: linear-gradient( 0.2deg,  rgba(79,104,112,1) -13.8%, rgba(177,234,252,1) 100.2% ); */
+  background-color: #bdcad9;
+  background-image: linear-gradient(315deg, #bdcad9 0%, #e1dada 74%); 
+
 }
 
 /* LOGIN PAGE */
 .loginmain{
   height: 90vh;
   display: flex;
-  background:var(--logingradient);
+  width: 100%;
+  background-image: url('https://cdn.dribbble.com/users/32512/screenshots/4573707/hmi-splash_by_milkinside.gif');
+ 
+  /* background-image: url('https://media.giphy.com/media/CN0yDqF4CSWru/giphy.gif');    */
+   /* background-image: url('https://i.pinimg.com/originals/7c/97/39/7c9739efa2d8ec3013e7fdfb11582050.gif'); 
+  /* background-image: url('http://shing.mobile9.com/download/media/41/bmw_81tqmta9.gif'); */
+  /* background-image: url('https://steamuserimages-a.akamaihd.net/ugc/924808798995571185/CA7991809B203FB77FE51C71754949A6E87DF487/'); */
   align-content: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+
+
+
 }
 .login{
   margin: auto;
@@ -339,20 +359,21 @@ p .input{
 
 /* SEARCH */
 .search{
-  background: var(--popupbackgroundcolor);
-  outline: none;
+  background: linear-gradient( 0.2deg,  rgba(79,104,112,1) -13.8%, rgba(177,234,252,1) 100.2% );
   border: 1px solid transparent;
   color:black;
   /* position: fixed; */
   top: 0px;
   left: 0;
   height: 40px;
-  width: 94vw;
+  width: 100%;
   padding: 0 10px 0 10px;
   overflow: hidden;
 }
 .search::placeholder{
-  color: rgb(221, 221, 221);
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
 }
 .searchcard{
   box-shadow: 0px 1px 5px 1px rgb(182, 182, 182);
@@ -424,13 +445,13 @@ h3 {
 
 .invisible {
   /* visibility: hidden; */
-  color: lightgray
+  color: black;
 }
 .visible {
   visibility: visible;
 }
 .simple-border {
-  border: 1px solid gray;
+  border: 1px solid black;
   padding: 5px 10px;
   border-radius: 10px;
 }
