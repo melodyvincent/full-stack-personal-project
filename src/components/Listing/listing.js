@@ -77,7 +77,7 @@ class Listing extends Component {
     }
 
     render() {
-        console.log(this.props)
+       
         const { listing, pictureArray, host } = this.state
         let mappedPictures = pictureArray.map((picture, i) => {
             return (

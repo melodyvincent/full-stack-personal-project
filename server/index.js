@@ -23,7 +23,7 @@ const {
 massive(CONNECTION_STRING).then(db => {
   // app.set stores info by putting it on a key:value pair
   app.set("db", db);
-  console.log("connected to db");
+
 });
 
 const app = express();
@@ -76,7 +76,7 @@ passport.use(
               profile.picture,
               profile.emails[0].value
             ]);
-            // console.log('newuser',newUser)
+            
             return done(null, newUser[0]);
           } else {
             return done(null, dbRes[0]);
@@ -87,7 +87,7 @@ passport.use(
         //   return done(null, user[0]);
         // })
         .catch(err => {
-          console.log(err.message);
+          
         });
     }
   )
@@ -126,10 +126,10 @@ app.get(
 );
 
 app.get("/auth/user", (req, res) => {
-  console.log("user", req.session);
+  
   if (req.user) {
     res.status(200).send(req.user);
-    // console.log("this is req.user:", req.user)
+    
   } else {
     res.status(401).send("Unauthorized User");
   }

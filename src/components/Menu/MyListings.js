@@ -41,10 +41,10 @@ class MyListing extends Component {
     }
 
     componentDidMount() {
+      
         // this.props.getUser() 
-        console.log(this.props.user)
             axios.get(`/api/userlisting/${this.props.user.id}`).then(res => {
-                console.log(res.data)
+                
                 this.setState({ 
                     mylistings: res.data, 
                     isLoading: false
@@ -85,9 +85,10 @@ class MyListing extends Component {
 
 
     render() {
-        console.log(this.state)
+       
 
-        let mappedlistings = this.state.mylistings.map((listing, i) => {
+            let mappedlistings = this.state.mylistings.map((listing, i) => {
+                console.log(listing.listing_id)
             let pictures = this.getPicArray(listing)
             let mappedPictures = pictures.map((picture, i) => {
                 return (
@@ -158,7 +159,7 @@ class MyListing extends Component {
                     </div>
                     <br />
                     <img style={{ float: 'right', height: '25px' }} alt='' src={edit_icon} onClick={() => { this.handleListingUpdate(listing.id) }} />
-                    <img style={{ height: '22px' }} alt='' src={delete_icon} onClick={() => { this.handleListingDelete(listing.id) }} />
+                    <img style={{ height: '22px' }} alt='' src={delete_icon} onClick={() => { this.handleListingDelete(listing.listing_id) }} />
                     <br />
                 </div>
             </div>

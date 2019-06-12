@@ -9,7 +9,7 @@ import Geocode from "react-geocode";
 import { storage } from "../Firebase/index";
 import add_image_icon from "./../Images/images/add_image_icon.png";
 
-console.log(Geocode);
+
 
 class EditListing extends Component {
   constructor() {
@@ -55,7 +55,7 @@ class EditListing extends Component {
     Geocode.enableDebug();
 
     axios.get(`/api/listing/${this.props.match.params.id}`).then(res => {
-      console.log(res.data[0]);
+      
       this.setState({
         address: res.data[0].address || null,
         buildingType: res.data[0].building_type,
@@ -99,8 +99,8 @@ class EditListing extends Component {
         axios
           .put(`/api/listing/${this.props.match.params.id}`, {
             address: this.state.address,
-            lat: lat,
-            lng: lng,
+            // lat: lat,
+            // lng: lng,
             building_type: this.state.buildingType,
             space_type: this.state.spaceType,
             num_spaces: this.state.numSpaces,
@@ -205,7 +205,7 @@ class EditListing extends Component {
             <h1>Pictures</h1>
             <hr />
             <div
-              class="pictureContainer"
+              className="pictureContainer"
               style={{
                 display: "grid",
                 gridTemplateColumns: "100px 100px",

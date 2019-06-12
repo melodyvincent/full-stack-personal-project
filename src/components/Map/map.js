@@ -23,13 +23,41 @@ class Map extends Component {
       map: null,
       searchBox: null,
       center: {
-        lat: 40.391617,
-        lng: -111.850769
+        lat: 40.362466,
+        lng: -111.978684
       },
       listings: []
     };
   }
+//   Axios.post("/", middleware.isLoggedIn, function(req, res, next){
 
+//     // create a newListings object with the data available to us on post
+
+//     var newListings = {
+//         acres: req.body.acres,
+//         rooms: req.body.rooms,
+//         name: req.body.name,
+//         (etc, width the remaning fields)
+//     };
+
+//     // initiate a call to geocode.  When the geocode is complete, add other fields to our newListings object
+//     geocoder.geocode(req.body.location, function (err, data) {
+//         if (data && data.results && data.results.length) { // there are some results
+//             newListings['lat'] = data.results[0].geometry.location.lat;
+//             newListings['long'] = data.results[0].geometry.location.lng;
+//             newListings['location'] = data.results[0].formatted_address;
+//         }
+
+//         // only once we have either tried and failed to process the geocode result, or succeeded and populated our newListings object, can we continue
+//         Listings.create(newListings, function(err, newlyCreated){
+//             if(err){
+//                 console.log('this2' + err);
+//             } else {
+//                 res.redirect("/listings");
+//             }
+//         });
+//     });
+// });
   componentDidMount() {
     Axios.get("/all/listings").then(res => {
       this.setState({
@@ -69,8 +97,8 @@ class Map extends Component {
 
     this.setState({
       center: {
-        lat: places[0].geometry.location.lat(),
-        lng: places[0].geometry.location.lng()
+        // lat: places[0].geometry.location.lat(),
+        // lng: places[0].geometry.location.lng()
       }
     });
   }

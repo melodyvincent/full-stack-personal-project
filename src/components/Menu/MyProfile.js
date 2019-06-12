@@ -39,7 +39,7 @@ class MyProfile extends Component {
   }
 
   render() {
-    console.log('my profile ', this.props)
+    
     return (
       <div>
         <Nav />

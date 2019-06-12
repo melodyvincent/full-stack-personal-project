@@ -12,7 +12,7 @@ import {connect} from 'react-redux'
 class Wizard6 extends Component {
 
     render() {
-      console.log(this.props)
+     
   
       const { updateWizMonday, updateWizTuesday, updateWizWednesday, updateWizThursday, updateWizFriday, updateWizSaturday, updateWizSunday } = this.props;
   

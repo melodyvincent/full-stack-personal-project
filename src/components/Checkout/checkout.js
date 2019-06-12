@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import DatePicker from "react-datepicker";
+import {
+  DateRangePicker,
+  DateRange,
+  SingleDatePicker,
+  DayPickerRangeController
+} from "react-dates";
 import moment from "moment";
 import { connect } from "react-redux";
 import "react-datepicker/dist/react-datepicker.css";
@@ -20,9 +26,10 @@ class Checkout extends Component {
       currentVehicle: "select",
       currentPayment: "select",
       paymentArray: [],
+      // startDate: momentPropTypes.momentObj,
+      // endDate: momentPropTypes.momentObj,
       startDate: new Date(),
-      endDate: "",
-
+      // // endDate: "",
       total: null
     };
   }
@@ -69,7 +76,17 @@ class Checkout extends Component {
     this.setState({
       total: Math.round(price * 1.13 * 100) / 100
     });
+    // const start = moment().startOf('month').startOf('week').format('YYYY/MM/DD');
+    // const end = moment().endOf('month').endOf('week').format('YYYY/MM/DD');
   };
+
+  // onDates: PropTypes.func 
+  // focusedInput: PropTypes.oneOf([START_DATE, END_DATE])
+
+  // onFocusChange: PropTypes.func
+  // minimumNights: PropTypes.number
+
+
   handleChangeStart = date => {
     this.setState({
       startDate: date
@@ -169,7 +186,7 @@ class Checkout extends Component {
     );
   };
   render() {
-    console.log(this.state);
+    
     const {
       address,
       apple_pay,
@@ -219,8 +236,22 @@ class Checkout extends Component {
               <h1>Schedule</h1>
               <hr />
 
+              {/* <DateRangePicker
+                startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+                startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+                endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+                endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                onDatesChange={({ startDate, endDate }) =>
+                  this.setState({ startDate, endDate })
+                } // PropTypes.func.isRequired,
+                focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+              />  */}
+
+
               <DatePicker
-                placeholderText="Click to select a start date"
+          
+                Text="Click to select a start date"
                 selected={this.state.startDate}
                 onChange={this.handleChangeEnd}
                 dateFormat="LLL"

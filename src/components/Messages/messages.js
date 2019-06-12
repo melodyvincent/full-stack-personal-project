@@ -22,9 +22,9 @@ class Chat extends Component {
 
   componentDidMount() {
     const { host_id } = this.props.currentListing;
-    console.log(this.props);
+   
     const user = this.props.getUser();
-    console.log(user);
+    
     // this.setState({
     //     logged_user_name: '',
     //     logged_user_email: '',

@@ -12,7 +12,6 @@ class Reservations extends Component {
   }
   componentDidMount() {
     const { user } = this.props;
-    console.log(user);
     axios.get(`/api/reservations`).then(res => {
       this.setState({
         reservations: res.data
@@ -21,7 +20,7 @@ class Reservations extends Component {
   }
   render() {
     const { reservations } = this.state;
-    console.log(reservations);
+  
     let mappedReservations = reservations.map((reservation, i) => {
       return (
         <div className="card" key={i}>
