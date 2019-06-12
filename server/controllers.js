@@ -10,6 +10,13 @@ module.exports = {
       .catch(err => res.status(500).send(console.log(err)));
   },
 
+  allListingsDisplay: (req, res) => {
+    const db = req.app.get("db");
+    db.get_all_listings().then(dbres => {
+      res.send(dbres);
+    });
+  },
+
   getUserListings: (req, res) => {
     const db = req.app.get("db");
     const { id } = req.params;
@@ -46,7 +53,7 @@ module.exports = {
   getReservations: (req, res) => {
     const db = req.app.get("db");
     const { id } = req.params;
-
+    console.log(id);
     db.get_reservations([id])
       .then(reservations => res.status(200).send(reservations))
       .catch(() => res.status(500).send());
@@ -54,6 +61,7 @@ module.exports = {
   getVehicles: (req, res) => {
     const db = req.app.get("db");
     const { id } = req.params;
+    // console.log(id)
 
     db.get_vehicles([id])
       .then(vehicles => res.status(200).send(vehicles))
@@ -271,6 +279,7 @@ module.exports = {
       });
   },
   updateListing: (req, res) => {
+    console.log('TEST')
     const db = req.app.get("db");
     const { id } = req.params;
     const {

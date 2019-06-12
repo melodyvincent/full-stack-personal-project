@@ -8,6 +8,7 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const router = express.Router();
 const Auth0Strategy = require("passport-auth0");
 require("dotenv").config();
+const cors = require("cors");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const {
@@ -35,6 +36,12 @@ app.use(
     saveUninitialized: true
   })
 );
+
+//stripe
+// app.use(cors());
+
+// const configureRoutes = require("./routes")
+// configureRoutes(app);
 
 // initializing passport so we can us it
 app.use(passport.initialize());
@@ -139,7 +146,36 @@ app.get("/auth/logout", (req, res) => {
 //User
 app.get("/api/host/:id", ctrl.getHost);
 
+//stripe payment
+// const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+// const stripeChargeCallback = res => (stripeErr, stripeRes) => {
+//   if (stripeErr) {
+//     res.status(500).send({ error: stripeErr });
+//   } else {
+//     res.status(200).send({ success: stripeRes });
+//   }
+// };
+// const paymentApi = app => {
+//   app.get("/", (req, res) => {
+//     res.send({
+//       message: "Hello Stripe checkout server!",
+//       timestamp: new Date().toISOString()
+//     });
+//   });
+// app.post("/", (req, res) => {
+//     const body = {
+//       source: req.body.token.id,
+//       amount: req.body.amount,
+//       currency: "usd"
+//     };
+//     stripe.charges.create(body, stripeChargeCallback(res));
+// });
+//   return app;
+// };
+// module.exports = paymentApi;
+
 //Listing
+app.get("/all/listings", ctrl.allListingsDisplay);
 app.get("/api/listings", ctrl.getAllListings);
 app.get("/api/listing", ctrl.getListingById);
 app.get("/api/userlisting/:id", ctrl.getUserListings);
@@ -164,8 +200,8 @@ app.put("/api/vehicle/:id", ctrl.updateVehicle);
 app.delete("/api/vehicle/:id", ctrl.deleteVehicle);
 
 //Reservations
-app.get("/api/reservation/:id", ctrl.getReservations);
-app.post("/api/reservations", ctrl.createReservation);
+app.post("/api/reservation/:id", ctrl.getReservations);
+app.get("/api/reservations", ctrl.createReservation);
 app.delete("/api/reservation/:id", ctrl.deleteReservation);
 
 // Availability

@@ -47,9 +47,9 @@ class MyProfile extends Component {
           {this.state.edit ?
             <div className='card'>
               <div>
-                <img alt='' src={this.props.user.user_pic} style={{ height: "130px", borderRadius: "50%", margin: '20px auto 50px auto', display: 'block' }} />
+                <img alt='' src={this.props.user_pic} style={{ height: "130px", borderRadius: "50%", margin: '20px auto 50px auto', display: 'block' }} />
               </div>
-              <p>Name: {this.props.user.username}</p>
+              <p>Name: {this.props.username}</p>
               <hr />
               {/* Name: <input type="name" className="input" name="name" value={this.state.username} onChange={e => { this.handleChange(e) }} />
               <hr /> */}
@@ -67,9 +67,9 @@ class MyProfile extends Component {
             :
             <div className='card'>
               <div>
-                <img alt='' src={this.props.user.user_pic} style={{ height: "150px", borderRadius: "50%", margin: '20px auto 50px auto', display: 'block' }} />
+                <img alt='' src={this.props.user_pic} style={{ height: "150px", borderRadius: "50%", margin: '20px auto 50px auto', display: 'block' }} />
               </div>
-                <div>Name: {this.props.user.username}</div>
+                <div>Name: {this.props.username}</div>
                 <hr/>
                 <div>Username: </div>
                 <hr/>

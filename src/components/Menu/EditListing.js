@@ -54,10 +54,10 @@ class EditListing extends Component {
     Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
     Geocode.enableDebug();
 
-    axios.get(`/api/listing?id=${this.props.match.params.id}`).then(res => {
+    axios.get(`/api/listing/${this.props.match.params.id}`).then(res => {
       console.log(res.data[0]);
       this.setState({
-        address: res.data[0].address,
+        address: res.data[0].address || null,
         buildingType: res.data[0].building_type,
         spaceType: res.data[0].space_type,
         numSpaces: res.data[0].num_spaces,
