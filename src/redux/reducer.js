@@ -70,7 +70,7 @@ const UPDATE_WIZ_VENMO = "UPDATE_WIZ_VENMO";
 const UPDATE_WIZ_PAYPAL = "UPDATE_WIZ_PAYPAL";
 const UPDATE_WIZ_APPLE_PAY = "UPDATE_WIZ_APPLE_PAY";
 const UPDATE_WIZ_MONDAY = "UPDATE_WIZ_MONDAY";
-const UPDATE_WIZ_TUESDAY = "UPDATE_WIZ_MONDAY";
+const UPDATE_WIZ_TUESDAY = "UPDATE_WIZ_TUESDAY";
 const UPDATE_WIZ_WEDNESDAY = "UPDATE_WIZ_WEDNESDAY";
 const UPDATE_WIZ_THURSDAY = "UPDATE_WIZ_THURSDAY";
 const UPDATE_WIZ_FRIDAY = "UPDATE_WIZ_FRIDAY";
@@ -152,25 +152,25 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, { applePay: action.payload });
 
     case UPDATE_WIZ_MONDAY:
-      return Object.assign({}, state, { monday: action.payload });
+      return Object.assign({}, state, { monday: !state.monday });
 
     case UPDATE_WIZ_TUESDAY:
-      return Object.assign({}, state, { tuesday: action.payload });
+      return Object.assign({}, state, { tuesday: !state.tuesday });
 
     case UPDATE_WIZ_WEDNESDAY:
-      return Object.assign({}, state, { wednesday: action.payload });
+      return Object.assign({}, state, { wednesday: !state.wednesday });
 
     case UPDATE_WIZ_THURSDAY:
-      return Object.assign({}, state, { thursday: action.payload });
+      return Object.assign({}, state, { thursday: !state.thursday });
 
     case UPDATE_WIZ_FRIDAY:
-      return Object.assign({}, state, { friday: action.payload });
+      return Object.assign({}, state, { friday: !state.friday });
 
     case UPDATE_WIZ_SATURDAY:
-      return Object.assign({}, state, { saturday: action.payload });
+      return Object.assign({}, state, { saturday: !state.saturday });
 
     case UPDATE_WIZ_SUNDAY:
-      return Object.assign({}, state, { sunday: action.payload });
+      return Object.assign({}, state, { sunday: !state.sunday });
 
     case UPDATE_WIZ_PIC_ONE:
       return Object.assign({}, state, { picOne: action.payload });
@@ -201,14 +201,14 @@ export function getUser(user) {
   };
 }
 
-export function updateWizlat(lat) {
+export function updateWizLat(lat) {
   return {
     type: UPDATE_WIZ_LAT,
     payload: lat
   };
 }
 
-export function updateWizlng(lng) {
+export function updateWizLng(lng) {
   return {
     type: UPDATE_WIZ_LNG,
     payload: lng
@@ -348,52 +348,52 @@ export function updateWizApplePay(applePay) {
   };
 }
 
-export function updateWizMonday(monday) {
+export function updateWizMonday() {
   return {
-    type: UPDATE_WIZ_MONDAY,
-    payload: monday
+    type: UPDATE_WIZ_MONDAY
+    
   };
 }
 
-export function updateWizTuesday(tuesday) {
+export function updateWizTuesday() {
   return {
-    type: UPDATE_WIZ_TUESDAY,
-    payload: tuesday
+    type: UPDATE_WIZ_TUESDAY
+   
   };
 }
 
-export function updateWizWednesday(wednesday) {
+export function updateWizWednesday() {
   return {
-    type: UPDATE_WIZ_WEDNESDAY,
-    payload: wednesday
+    type: UPDATE_WIZ_WEDNESDAY
+  
   };
 }
 
-export function updateWizThursday(thursday) {
+export function updateWizThursday() {
   return {
-    type: UPDATE_WIZ_THURSDAY,
-    payload: thursday
+    type: UPDATE_WIZ_THURSDAY
+    
   };
 }
 
-export function updateWizFriday(friday) {
+export function updateWizFriday() {
   return {
-    type: UPDATE_WIZ_FRIDAY,
-    payload: friday
+    type: UPDATE_WIZ_FRIDAY
+  
   };
 }
 
-export function updateWizSaturday(saturday) {
+export function updateWizSaturday() {
   return {
-    type: UPDATE_WIZ_SATURDAY,
-    payload: saturday
+    type: UPDATE_WIZ_SATURDAY
+   
   };
 }
 
-export function updateWizSunday(sunday) {
+export function updateWizSunday() {
   return {
-    type: UPDATE_WIZ_SUNDAY,
-    payload: sunday
+    type: UPDATE_WIZ_SUNDAY
+    
   };
 }
 

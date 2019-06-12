@@ -19,8 +19,8 @@ class Checkout extends Component {
             currentVehicle: 'select',
             currentPayment: 'select',
             paymentArray: [],
-            startDate: moment(),
-            endDate: moment(),
+            startDate: new Date(),
+            // endDate: moment(),
             total: null
         }
     }
@@ -29,8 +29,8 @@ class Checkout extends Component {
         
     }
     getListing = () => {
-        const {user, currentListing} = this.props
-        axios.get(`/api/listing/${currentListing.id}`).then(res => {
+        const {user} = this.props
+        axios.get(`/api/listing`).then(res => {
             this.setState({
                 listing: res.data[0],
             })
@@ -153,7 +153,33 @@ class Checkout extends Component {
                         <div className='card'>
                             <h1>Schedule</h1>
                             <hr/>
+
                             <DatePicker
+                                placeholderText='Click to select a start date'
+                                selected={this.state.startDate}
+                                onChange={this.handleChange}
+                                dateFormat='LLL'
+                                timeCaption='time'
+                            maxDate={moment().add(5, 'months')}
+                                showTimeSelect
+                                timeFormat='HH:mm'
+                                timeIntervals={15}
+                                todayButton={"TODAY"}
+                            />
+                            {/* <DatePicker
+                                placeholderText='Click to select an end date'
+                                selected={this.state.endDate}
+                                onChange={this.handleChange}
+                                dateFormat='LLL'
+                                timeCaption='time'
+                            maxDate={moment().add(5, 'months')}
+                                showTimeSelect
+                                timeFormat='HH:mm'
+                                timeIntervals={15}
+                                todayButton={"TODAY"}
+                            /> */}
+
+                            {/* <DatePicker
                                 className='dropdownselect'
                                 selected={this.state.startDate}
                                 selectsStart
@@ -163,7 +189,7 @@ class Checkout extends Component {
                                 filterDate={this.isAvailable}
                                 minDate={moment()}
                             />
-                            <DatePicker
+                            { <DatePicker
                                 className='dropdownselect'
                                 selected={this.state.endDate}
                                 selectsEnd
@@ -172,7 +198,7 @@ class Checkout extends Component {
                                 onChange={this.handleChangeEnd}
                                 filterDate={this.isAvailable}
                                 minDate={moment()}
-                            />
+                            />  } */}
                         </div>
                         <div className='card'>
                             <h1 style={{textAlign:'center'}}>Payments</h1>

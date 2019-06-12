@@ -12,6 +12,7 @@ import {connect} from 'react-redux'
 class Wizard6 extends Component {
 
     render() {
+      console.log(this.props)
   
       const { updateWizMonday, updateWizTuesday, updateWizWednesday, updateWizThursday, updateWizFriday, updateWizSaturday, updateWizSunday } = this.props;
   
@@ -22,37 +23,37 @@ class Wizard6 extends Component {
             <h1>Please indicate all available days for your parking space(s).</h1>
             <div className='card'>
               <input type="checkbox" id="Monday" name="Monday" className="" value="Monday"
-                onChange={(e) => { updateWizMonday(true) }} />
+                onChange={(e) => { updateWizMonday() }} />
               <label htmlFor="Monday">Monday</label>
               <hr />
   
               <input type="checkbox" id="Tuesday" name="Tuesday" className="" value="Tuesday"
-                onChange={(e) => { updateWizTuesday(true) }} />
+                onChange={(e) => { updateWizTuesday() }} />
               <label htmlFor="Tuesday">Tuesday</label>
               <hr />
   
               <input type="checkbox" id="Wednesday" name="Wednesday" className="" value="Wednesday"
-                onChange={(e) => { updateWizWednesday(true) }} />
+                onChange={(e) => { updateWizWednesday() }} />
               <label htmlFor="Wednesday">Wednesday</label>
               <hr />
   
               <input type="checkbox" id="Thursday" name="Thursday" className="" value="Thursday"
-                onChange={(e) => { updateWizThursday(true) }} />
+                onChange={(e) => { updateWizThursday() }} />
               <label htmlFor="Thursday">Thursday</label>
               <hr />
   
               <input type="checkbox" name="Friday" id="Friday" className="" value="Friday"
-                onChange={(e) => { updateWizFriday(true) }} />
+                onChange={(e) => { updateWizFriday() }} />
               <label htmlFor="Friday">Friday</label>
               <hr />
   
               <input type="checkbox" id="Saturday" name="Saturday" className="" value="Saturday"
-                onChange={(e) => { updateWizSaturday(true) }} />
+                onChange={(e) => { updateWizSaturday() }} />
               <label htmlFor="Saturday" >Saturday</label>
               <hr />
   
               <input type="checkbox" id="Sunday" name="Sunday" className="" value="Sunday"
-                onChange={(e) => { updateWizSunday(true) }} />
+                onChange={(e) => { updateWizSunday() }} />
               <label htmlFor="Sunday" >Sunday</label>
             </div>
             <div className='nav'>

@@ -1,36 +1,130 @@
-import React, { Component } from 'react';
-import Nav from '../Nav/Nav'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import axios from "axios";
+import { getUser } from "../../redux/reducer";
+import { Link } from "react-router-dom";
 
+class Chat extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      host: {},
+      user: {},
+      username: "",
+      name: "",
+      email: "",
+      subject: "",
+      message: ""
+    };
 
+    this.sendMail = this.sendMail.bind(this);
+  }
 
+  componentDidMount() {
+    const { host_id } = this.props.currentListing;
+    console.log(this.props);
+    const user = this.props.getUser();
+    console.log(user);
+    // this.setState({
+    //     logged_user_name: '',
+    //     logged_user_email: '',
 
-export default class Messages extends Component {
-    constructor() {
-        super()
+    // })
+    axios.get(`/api/host/${host_id}`).then(res => {
+      this.setState({ host: res.data[0] });
+    });
+  }
 
-        this.state = {
-            toggle: true,
-            messages: []
-        }
-    }
+  sendMail(e) {
+    e.preventDefault();
+    axios
+      .post("/api/sendmail", {
+        name: this.props.username,
+        emailFrom: this.props.email,
+        emailTo: this.state.host.email,
+        subject: this.state.subject,
+        message: this.state.message
+      })
+      .then(res => {
+        this.setState({
+          name: "",
+          email: "",
+          subject: "",
+          message: ""
+        });
+        this.props.history.push("/listings");
+      });
+  }
 
+  render() {
+    console.log("Chat Props ", this.props.user);
+    console.log(this.state.host);
+    return (
+      <div className="chat-main">
+        <form id="contact-form" onSubmit={this.sendMail}>
+          <div className="form-group">
+            <p className="">From: {this.props.username}</p>
+          </div>
+          <div className="form-group">
+            {/* <label >From Email Address</label> */}
+            <p className="">{this.props.email}</p>
+          </div>
+          <br />
+          <div>
+            <p className="">To: {this.state.host.email}</p>
+          </div>
+          <br />
 
-    render() {
-        let mappedmessages1 = this.state.messages.map((e, i) => (
-            <p key={i}>{e}</p>
+          <div className="form-group">
+            <label>Subject</label>
+            <input
+              type="text"
+              value={this.state.subject}
+              onChange={e => this.setState({ subject: e.target.value })}
+              // className="form-control"
+              className="input"
+              id="subject"
+            />
+          </div>
+          <div className="form-group">
+            <label>Message</label>
+            <textarea
+              // className="form-control"
+              className="txtarea"
+              value={this.state.message}
+              onChange={e => this.setState({ message: e.target.value })}
+              rows="5"
+              id="message"
+            />
+          </div>
+          <button
+            type="submit"
+            // className="btn-primary"
+            className="smallbutton"
+          >
+            Submit
+          </button>
+          <br />
 
-        ))
-
-        return (
-            <div>
-                <Nav/>
-                <p>Messaging</p>
-                <div>
-                    <button className='smallbutton' onClick={() => { this.setState({ toggle: true }) }}>Lots I am interested in</button>
-                    <button className='smallbutton' onClick={() => { this.setState({ toggle: false }) }}>Lots Im renting out</button>
-                    {this.state.toggle ? <div>{mappedmessages1}</div> : <div><p>Not a list</p></div>}
-                </div>
-            </div>
-        )
-    }
+          <a className="smallbutton" href="javascript:history.back()">
+            Go Back
+          </a>
+          {/* <a className="smallbutton" href="#" onClick='return false;'>Link>Go Back</a> */}
+        </form>
+      </div>
+    );
+  }
 }
+
+function mapStateToProps(state) {
+  const { user, currentListing } = state;
+  return {
+    user: user,
+    currentListing: currentListing
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  { getUser }
+)(Chat);

@@ -73,7 +73,7 @@ class Wizard8 extends Component {
       lng: lng
     })
       .then((res => {
-        // console.log(res)
+       const listing = res.data[0]
         axios.post('/api/feature', {
           covered: covered,
           lit: lit,
@@ -81,7 +81,7 @@ class Wizard8 extends Component {
           camera: camera,
           fenced: fenced,
           guarded: guarded,
-          listing_id: res.data[0].id
+          listing_id: listing.id
         })
 
 
@@ -90,7 +90,7 @@ class Wizard8 extends Component {
           pic_two: picTwo,
           pic_three: picThree,
           pic_four: picFour,
-          listing_id: res.data[0].id
+          listing_id: listing.id
         })
 
         axios.post('/api/availability', {
@@ -101,7 +101,7 @@ class Wizard8 extends Component {
           friday: friday,
           saturday: saturday,
           sunday: sunday,
-          listing_id: res.data[0].id
+          listing_id: listing.id
         })
 
         axios.post('api/payment', {
@@ -110,7 +110,7 @@ class Wizard8 extends Component {
           venmo: venmo,
           pay_pal: paypal,
           apple_pay: applePay,
-          listing_id: res.data[0].id
+          listing_id: listing.id
         })
 
       })).then(() => {

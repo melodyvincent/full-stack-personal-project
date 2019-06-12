@@ -15,7 +15,7 @@ import camera_icon from '../Images/images/camera_icon.png'
 import fenced_icon from '../Images/images/fenced_icon.png'
 import police_icon from '../Images/images/police_icon.png'
 import delete_icon from '../Images/images/delete_icon.png'
-import edit_icon from '../Images/images/delete_icon.png'
+import edit_icon from './../Images/images/edit_icon.png'
 import covered_parking_iconoff from '../Images/images/covered_parking_iconoff.png'
 import lit_icon_off from '../Images/images/lit_icon_off.png'
 import charging_icon_off from '../Images/images/charging_iconoff.png'
@@ -44,6 +44,7 @@ class MyListing extends Component {
         // this.props.getUser() 
         console.log(this.props.user)
             axios.get(`/api/userlisting/${this.props.user.id}`).then(res => {
+                console.log(res.data)
                 this.setState({ 
                     mylistings: res.data, 
                     isLoading: false
@@ -84,7 +85,7 @@ class MyListing extends Component {
 
 
     render() {
-        console.log(this.props)
+        console.log(this.state)
 
         let mappedlistings = this.state.mylistings.map((listing, i) => {
             let pictures = this.getPicArray(listing)

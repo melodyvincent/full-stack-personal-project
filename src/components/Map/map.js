@@ -86,7 +86,7 @@ class Map extends Component {
                 <input
                     type="text"
                     placeholder="Search"
-                    className='TEST'
+                    className='search'
                 />
                 </StandaloneSearchBox>
                 <GoogleMap

@@ -42,7 +42,7 @@ class Listing extends Component {
     getListingById = () => {
         const { currentListing } = this.props;
 
-        axios.get(`/api/listing/${currentListing.id}`).then(res => {
+        axios.get(`/api/listings`).then(res => {
             this.setState({
                 listing: res.data[0],
                 isLoading: false
@@ -77,6 +77,7 @@ class Listing extends Component {
     }
 
     render() {
+        console.log(this.props)
         const { listing, pictureArray, host } = this.state
         let mappedPictures = pictureArray.map((picture, i) => {
             return (
@@ -165,7 +166,7 @@ class Listing extends Component {
                             <br />
                             <img src={host.user_pic} style={{ width: '50px' }} alt='' />
                             <br />
-                            <Link to='/chat'>
+                            <Link to='/Messages'>
                                 <button>SEND EMAIL</button>
                             </Link>
                             

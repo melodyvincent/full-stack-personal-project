@@ -14,8 +14,12 @@ class Search extends Component {
     };
   }
 
-  componentDidMount() {
-    axios.get("/auth/user").then(res => {
+//   componentDidMount() {
+//     this.props.getUser();
+//     this.getListings();
+// } 
+  componentDidMount = async() => {
+    await axios.get("/auth/user").then(res => {
       console.log(res.data);
       this.props.getUser(res.data);
     });
@@ -24,7 +28,8 @@ class Search extends Component {
   }
 
   getListings() {
-    axios.get("/api/listing").then(res => {
+    console.log('test')
+    axios.get("/api/listings").then(res => {
       console.log("hit");
       this.setState({
         markers: res.data,
@@ -35,9 +40,10 @@ class Search extends Component {
 
   render() {
     console.log(this.props);
+    console.log(this.state)
     return (
       <div>
-        {!this.state.isLoading ? (
+        {this.state.isLoading ? (
           <div>
             <Nav />
             <p>Loading</p>

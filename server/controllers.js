@@ -13,7 +13,6 @@ module.exports = {
   getUserListings: (req, res) => {
     const db = req.app.get("db");
     const { id } = req.params;
-    console.log(id)
 
     db.get_user_listings([id])
       .then(listings => res.status(200).send(listings))
@@ -22,9 +21,9 @@ module.exports = {
 
   getListingById: (req, res) => {
     const db = req.app.get("db");
-    const { id } = req.params;
-
-    db.get_listing_by_id([id])
+    let { id } = req.query;
+    id = +id;
+    db.get_listing_by_id({ id })
       .then(listing => res.status(200).send(listing))
       .catch(err => res.status(500).send(console.log(err)));
   },
@@ -48,7 +47,7 @@ module.exports = {
     const db = req.app.get("db");
     const { id } = req.params;
 
-    db.get_reservation([id])
+    db.get_reservations([id])
       .then(reservations => res.status(200).send(reservations))
       .catch(() => res.status(500).send());
   },
@@ -64,7 +63,7 @@ module.exports = {
     const db = req.app.get("db");
     const { id } = req.params;
 
-    db.get_host([id])
+    db.get_hosts([id])
       .then(user => res.status(200).send(user))
       .catch(() => res.status(500).send());
   },
@@ -114,7 +113,7 @@ module.exports = {
       guarded,
       listing_id
     } = req.body;
-    // console.log(req.body)
+    console.log(req.body);
 
     db.create_features([
       covered,
@@ -132,9 +131,9 @@ module.exports = {
   createPictures: (req, res) => {
     const db = req.app.get("db");
     const { pic_one, pic_two, pic_three, pic_four, listing_id } = req.body;
-    // console.log(req.body)
+    console.log(req.body);
 
-    db.create_picture([pic_one, pic_two, pic_three, pic_four, listing_id])
+    db.create_pictures([pic_one, pic_two, pic_three, pic_four, listing_id])
       .then(pictures => res.status(200).send(pictures))
       .catch(() => res.status(500).send());
   },
@@ -176,7 +175,7 @@ module.exports = {
       sunday,
       listing_id
     } = req.body;
-    // console.log(req.body)
+    console.log(req.body);
 
     db.create_availability([
       monday,
@@ -205,7 +204,16 @@ module.exports = {
       plate
     } = req.body;
 
-    db.create_vehicle([user_id, car_pic, year, make, model, color, size, plate])
+    db.create_vehicles([
+      user_id,
+      car_pic,
+      year,
+      make,
+      model,
+      color,
+      size,
+      plate
+    ])
       .then(vehicle => res.status(200).send(vehicle))
       .catch(() => res.status(500).send());
   },
@@ -213,6 +221,7 @@ module.exports = {
   createPayment: (req, res) => {
     const db = req.app.get("db");
     const { cash, credit, venmo, pay_pal, apple_pay, listing_id } = req.body;
+    console.log(req.body);
 
     db.create_payments([cash, credit, venmo, pay_pal, apple_pay, listing_id])
       .then(() => res.status(200).send())
@@ -336,7 +345,7 @@ module.exports = {
     const { id } = req.params;
     const { car_pic, year, make, model, color, size, plate } = req.body;
 
-    db.update_vehicle([car_pic, year, make, model, color, size, plate, id])
+    db.update_vehicles([car_pic, year, make, model, color, size, plate, id])
       .then(vehicles => res.status(200).send(vehicles))
       .catch(() => res.status(500).send());
   },
@@ -363,7 +372,7 @@ module.exports = {
     const db = req.app.get("db");
     const { id } = req.params;
 
-    db.delete_vehicle([id])
+    db.delete_vehicles([id])
       .then(() => res.status(200).send())
       .catch(() => res.status(500).send());
   },

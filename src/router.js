@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Search from './components/Search/Search'
+import Search from "./components/Search/Search";
 import EditListing from "./components/Menu/EditListing";
-import Login from './components/Login/Login';
+import Login from "./components/Login/Login";
 import Messages from "./components/Messages/Messages";
 import Reservations from "./components/Reservations/Reservation";
 import MyVehicle from "./components/Menu/MyVehicle";
@@ -29,10 +29,10 @@ export default (
   <Switch>
     <Route exact path="/" component={Login} />
     {/* <Route path="/register" component={Register} /> */}
-    <Route path="/myListing/edit/:id" component={EditListing} />
+    <Route path="/mylisting/edit/:id" component={EditListing} />
     <Route path="/search" component={Search} />
     <Route path="/messages" component={Messages} />
-    <Route path="reservations" component={Reservations} />
+    <Route path="/reservations" component={Reservations} />
     <Route path="/myvehicle" component={MyVehicle} />
     <Route path="/myprofile" component={MyProfile} />
     <Route path="/MyListings" component={MyListing} />
@@ -40,8 +40,6 @@ export default (
     <Route path="/checkout" component={Checkout} />
     <Route path="/chat" component={Chat} />
     {/* <Route path="/myListing/edit/:id" component={EditListing} /> */}
-  
-
 
     <Route path="/wizard0" component={Wizard0} />
     <Route path="/wizard1" component={Wizard1} />

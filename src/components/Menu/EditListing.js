@@ -6,8 +6,10 @@ import Nav from "../Nav/Nav";
 import checkmark_icon from "./../Images/images/checkmark_icon.png";
 import "./../../animate.css";
 import Geocode from "react-geocode";
-import {storage} from "../Firebase/index";
+import { storage } from "../Firebase/index";
 import add_image_icon from "./../Images/images/add_image_icon.png";
+
+console.log(Geocode);
 
 class EditListing extends Component {
   constructor() {
@@ -52,7 +54,8 @@ class EditListing extends Component {
     Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
     Geocode.enableDebug();
 
-    axios.get(`/api/listing/${this.props.match.params.id}`).then(res => {
+    axios.get(`/api/listing?id=${this.props.match.params.id}`).then(res => {
+      console.log(res.data[0]);
       this.setState({
         address: res.data[0].address,
         buildingType: res.data[0].building_type,
@@ -193,6 +196,7 @@ class EditListing extends Component {
   }
 
   render() {
+    console.log(this.state.address);
     return (
       <div className="reset">
         <Nav />

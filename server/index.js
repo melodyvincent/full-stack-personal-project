@@ -140,8 +140,8 @@ app.get("/auth/logout", (req, res) => {
 app.get("/api/host/:id", ctrl.getHost);
 
 //Listing
-app.get("/api/listing", ctrl.getAllListings);
-app.get("/api/listing/:id", ctrl.getListingById);
+app.get("/api/listings", ctrl.getAllListings);
+app.get("/api/listing", ctrl.getListingById);
 app.get("/api/userlisting/:id", ctrl.getUserListings);
 app.get("/api/preview/:id", ctrl.getListingPreview);
 app.post("/api/listing", ctrl.createListing);
@@ -165,7 +165,7 @@ app.delete("/api/vehicle/:id", ctrl.deleteVehicle);
 
 //Reservations
 app.get("/api/reservation/:id", ctrl.getReservations);
-app.post("/api/reservation", ctrl.createReservation);
+app.post("/api/reservations", ctrl.createReservation);
 app.delete("/api/reservation/:id", ctrl.deleteReservation);
 
 // Availability
