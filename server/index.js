@@ -174,6 +174,11 @@ app.get("/api/host/:id", ctrl.getHost);
 // };
 // module.exports = paymentApi;
 
+//persistent user login
+app.get('/api/me', (req, res) =>{
+res.send(req.user)
+})
+
 //Listing
 app.get("/all/listings", ctrl.allListingsDisplay);
 app.get("/api/listings", ctrl.getAllListings);

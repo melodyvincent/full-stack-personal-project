@@ -99,7 +99,7 @@ class EditListing extends Component {
         axios
           .put(`/api/listing/${this.props.match.params.id}`, {
             address: this.state.address,
-            // lat: lat,
+            // // lat: lat,
             // lng: lng,
             building_type: this.state.buildingType,
             space_type: this.state.spaceType,

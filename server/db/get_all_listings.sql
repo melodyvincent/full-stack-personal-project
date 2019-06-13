@@ -20,7 +20,8 @@ features.lit,
 features.charging,
 features.camera,
 features.fenced,
-features.guarded
+features.guarded,
+listings.id
 FROM listings
 JOIN features ON features.listing_id = listings.id
 JOIN pictures ON pictures.listing_id = listings.id 

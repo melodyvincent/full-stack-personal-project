@@ -70,10 +70,6 @@ class MyListing extends Component {
        return picArr;
     }
 
-    handleListingUpdate(id) {
-        this.props.history.push('/mylisting/edit/' + id);
-    }
-
     handleListingDelete(id) {
         let result = window.confirm('Are you sure you want to delete this listing?')
         if (result) {
@@ -159,7 +155,7 @@ class MyListing extends Component {
                     </div>
                     <br />
 
-                    <img style={{ float: 'right', height: '25px' }} alt='' src={edit_icon} onClick={() => { this.handleListingUpdate(listing.id) }} />
+                    <Link to={`/mylisting/edit/${listing.id}`}><img style={{ float: 'right', height: '25px' }} alt='' src={edit_icon}  /> </Link>
                     <img style={{ height: '22px' }} alt='' src={delete_icon} onClick={() => { this.handleListingDelete(listing.listing_id) }} />
                     <br />
                 </div>
@@ -169,7 +165,7 @@ class MyListing extends Component {
 
         return (
             <div>
-                {this.state.isLoading ?
+                {!this.state.isLoading ?
                     <div>
                         <Nav />
                         <div className='reset'>

@@ -150,7 +150,7 @@ class Wizard8 extends Component {
             <p>{buildingType}</p>
             <hr />
 
-            <h3>NUMBER OF AVAILABLE SPACES</h3>
+            <h2>NUMBER OF AVAILABLE SPACES</h2>
             <br />
             <p>{spaceQuantity}</p>
             <hr />
