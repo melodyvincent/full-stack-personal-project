@@ -232,7 +232,7 @@ module.exports = {
   createPayment: (req, res) => {
     const db = req.app.get("db");
     const { cash, credit, venmo, pay_pal, apple_pay, listing_id } = req.body;
-    c
+    
 
     db.create_payments([cash, credit, venmo, pay_pal, apple_pay, listing_id])
       .then(() => res.status(200).send())
@@ -371,6 +371,18 @@ module.exports = {
       .then(payments => res.status(200).send(payments))
       .catch(() => res.status(500).send());
   },
+
+  updateUser: (req, res) => {
+  const db = req.app.get('db');
+  const { id } = req.params;
+  const {username, auth_id, user_pic, email} = req.body;
+  db.update_users([username, auth_id, user_pic, email, id])
+
+    .then(users => res.status(200).send(users))
+    .catch(() => res.status(500).send());
+
+  },
+
   //DELETE CONTROLLERS
   deleteListing: (req, res) => {
     const db = req.app.get("db");

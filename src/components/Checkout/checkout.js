@@ -107,34 +107,29 @@ class Checkout extends Component {
       currentPayment: e.target.value
     });
   };
-  onToken = (token, addresses) => {
-    const body = {
-      amount: 999,
-      token: token
-    };
-    axios
-      .post("http://localhost:8000", body)
-      .then(res => {
-        console.log(res);
-        alert("Payment Success");
-      })
-      .catch(err => {
-        // console.log('Payment Error: ', error);
-        alert("Payment Error");
-      });
-  };
-
-  //     axios
-  //       .post("http://localhost:8000/payment", body)
-  //       .then(response => {
-  //         console.log(response);
-  //         alert("Payment Success");
-  //       })
-  //       .catch(error => {
-  //         console.log("Payment Error: ", error);
-  //         alert("Payment Error");
-  //       });
+  // onToken = (token, addresses) => {
+  //   const body = {
+  //     amount: 999,
+  //     token: token
   //   };
+  //   axios
+  //     .post("/localhost:8000", body)
+  //     .then(res => {
+  //       console.log(res);
+  //       alert("Payment Success");
+  //     })
+  //     .catch(err => {
+  //       // console.log('Payment Error: ', error);
+  //       alert("Payment Error");
+  //     });
+  // };
+
+  onToken = (token) =>{
+    token.card = void 0;
+    axios.post('/api/payment', {token, amount: 100}).then(response =>{
+    alert('we are in business')
+  });
+  }
 
   isAvailable = date => {
     const {
@@ -313,14 +308,14 @@ class Checkout extends Component {
                 {!venmo ? null : <option value="venmo">Venmo</option>}
               </select>
               <StripeCheckOut
-                data-amount={999}
-                billingAddress
+                token={this.onToken}
+                amount={999}
+                billingAddress={true}
                 description="Parking Reservation"
                 // image='/src/Images/images/logo.png'
                 locale="auto"
                 name="ez-parking"
                 stripeKey="pk_test_LhOnBt3bI7O2jnZpAKWxza9z00EvoiKyHN"
-                token={this.onToken}
                 zipCode
                 panelLabel="Reservation payment for{{amount}}"
               />

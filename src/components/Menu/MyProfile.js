@@ -34,22 +34,33 @@ class MyProfile extends Component {
   }
   componentDidMount() {
     axios.get('/auth/user').then(res => {
-      this.props.getUser()
+      this.props.getUser(res.data)
     })
   }
 
-  render() {
+   handleUpdate(){
+     axios.put(`/api/users/${this.props.user.id}`).then(res =>{
+
+       console.log("updated")
+
+     })
     
+     this.handleEdit()
+   }
+
+  render() {
+   
     return (
+
       <div>
         <Nav />
         <div className="myprofile">
           {this.state.edit ?
             <div className='card'>
               <div>
-                <img alt='' src={this.props.user_pic} style={{ height: "130px", borderRadius: "50%", margin: '20px auto 50px auto', display: 'block' }} />
+                <img alt='' src={this.props.user.user_pic} style={{ height: "130px", borderRadius: "50%", margin: '20px auto 50px auto', display: 'block' }} />
               </div>
-              <p>Name: {this.props.username}</p>
+              <p>Name: {this.props.user.username}</p>
               <hr />
               {/* Name: <input type="name" className="input" name="name" value={this.state.username} onChange={e => { this.handleChange(e) }} />
               <hr /> */}
@@ -61,15 +72,15 @@ class MyProfile extends Component {
               <hr />
               <div>
                 <img src={cancel_icon} alt='' onClick = {() => {this.handleEdit()}} style={{height:'27px'}}/>
-                <img alt='' src={upload_icon} style={{float: 'right', height: '25px'}}/>
+                <img alt='' src={upload_icon} onClick={() =>{this.handleUpdate()} } style={{float: 'right', height: '25px'}}/>
               </div>
             </div>
             :
             <div className='card'>
               <div>
-                <img alt='' src={this.props.user_pic} style={{ height: "150px", borderRadius: "50%", margin: '20px auto 50px auto', display: 'block' }} />
+                <img alt='' src={this.props.user.user_pic} style={{ height: "150px", borderRadius: "50%", margin: '20px auto 50px auto', display: 'block' }} />
               </div>
-                <div>Name: {this.props.username}</div>
+                <div>Name: {this.props.user.username}</div>
                 <hr/>
                 <div>Username: </div>
                 <hr/>

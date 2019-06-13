@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.animated {
+/* .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
@@ -12,11 +12,11 @@
   animation-iteration-count: infinite;
 }
 
-.slideOutDown {
+/.slideOutDown {
   -webkit-animation-name: slideOutDown;
   animation-name: slideOutDown;
-  -webkit-animation-duration: 5s;
-  animation-duration: 5s;
+  -webkit-animation-duration: 6s;
+  animation-duration: 6s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
   }
@@ -41,4 +41,4 @@
   -webkit-transform: translateY(100%);
   transform: translateY(100%);
   }
-  } 
+  }   */

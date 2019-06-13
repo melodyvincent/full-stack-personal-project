@@ -36,7 +36,8 @@ const initialState = {
   picThree: null,
   picFour: null,
   rate: 0,
-  currentListing: {}
+  currentListing: {},
+  myprofile: ""
 };
 
 // const initialState = {
@@ -82,6 +83,7 @@ const UPDATE_CURRENT_LISTING = "UPDATE_CURRENT_LISTING";
 const UPDATE_WIZ_PIC_TWO = "UPDATE_WIZ_PIC_TWO";
 const UPDATE_WIZ_PIC_THREE = "UPDATE_WIZ_PIC_THREE";
 const UPDATE_WIZ_PIC_FOUR = "UPDATE_WIZ_PIC_FOUR";
+const UPDATE_MYPROFILE = "UPDATE_MYPROFILE"
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
@@ -189,6 +191,9 @@ export default function reducer(state = initialState, action) {
 
     case UPDATE_WIZ_PIC_FOUR:
       return Object.assign({}, state, { picFour: action.payload });
+
+    case UPDATE_MYPROFILE:
+      return Object.assign({}, state, { myprofile: action.payload});
     default:
       return state;
   }
@@ -436,5 +441,11 @@ export function updateWizPicFour(picFour) {
   return {
     type: UPDATE_WIZ_PIC_FOUR,
     payload: picFour
+  };
+}
+export function updateMyProfile(myProfile) {
+  return {
+    type: UPDATE_MYPROFILE,
+    payload: myProfile
   };
 }
