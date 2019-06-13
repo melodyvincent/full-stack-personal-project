@@ -88,7 +88,7 @@ class MyListing extends Component {
        
 
             let mappedlistings = this.state.mylistings.map((listing, i) => {
-                console.log(listing.listing_id)
+                
             let pictures = this.getPicArray(listing)
             let mappedPictures = pictures.map((picture, i) => {
                 return (
@@ -158,6 +158,7 @@ class MyListing extends Component {
                         </div>
                     </div>
                     <br />
+
                     <img style={{ float: 'right', height: '25px' }} alt='' src={edit_icon} onClick={() => { this.handleListingUpdate(listing.id) }} />
                     <img style={{ height: '22px' }} alt='' src={delete_icon} onClick={() => { this.handleListingDelete(listing.listing_id) }} />
                     <br />
@@ -168,7 +169,7 @@ class MyListing extends Component {
 
         return (
             <div>
-                {!this.state.isLoading ?
+                {this.state.isLoading ?
                     <div>
                         <Nav />
                         <div className='reset'>

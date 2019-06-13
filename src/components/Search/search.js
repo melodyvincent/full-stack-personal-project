@@ -55,8 +55,8 @@ class Search extends Component {
                 zoom={14}
                 markers={this.state.markers}
                 googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyAQQH-EvgcFwG9b-bonTu98AQm7Hji1oCA&v=3.exp&libraries=geometry,drawing,places`}
-                containerElement={<div style={{ height: `300px` }} />}
-                loadingElement={<div style={{ height: `90%%` }} />}
+                containerElement={<div style={{ height: `400px` }} />}
+                loadingElement={<div style={{ height: `90%` }} />}
                 mapElement={<div style={{ height: `95%` }} />}
               />
             </div>

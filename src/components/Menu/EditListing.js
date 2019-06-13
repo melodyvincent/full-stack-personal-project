@@ -92,9 +92,9 @@ class EditListing extends Component {
   }
 
   updateListing() {
-    Geocode.fromAddress(this.state.address).then(
-      response => {
-        const { lat, lng } = response.results[0].geometry.location;
+    // Geocode.fromAddress(this.state.address).then(
+    //   response => {
+    //     const { lat, lng } = response.results[0].geometry.location;
 
         axios
           .put(`/api/listing/${this.props.match.params.id}`, {
@@ -154,11 +154,11 @@ class EditListing extends Component {
                   });
               });
           });
-      },
-      error => {
-        console.error(error);
-      }
-    );
+    //   },
+    //   error => {
+    //     console.error(error);
+    //   }
+    // );
   }
 
   handleClick(e) {
@@ -196,7 +196,7 @@ class EditListing extends Component {
   }
 
   render() {
-    console.log(this.state.address);
+    
     return (
       <div className="reset">
         <Nav />

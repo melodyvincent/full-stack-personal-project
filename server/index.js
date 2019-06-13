@@ -177,7 +177,7 @@ app.get("/api/host/:id", ctrl.getHost);
 //Listing
 app.get("/all/listings", ctrl.allListingsDisplay);
 app.get("/api/listings", ctrl.getAllListings);
-app.get("/api/listing", ctrl.getListingById);
+app.get("/api/listing/:id", ctrl.getListingById);
 app.get("/api/userlisting/:id", ctrl.getUserListings);
 app.get("/api/preview/:id", ctrl.getListingPreview);
 app.post("/api/listing", ctrl.createListing);

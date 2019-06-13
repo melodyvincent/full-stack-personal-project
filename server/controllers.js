@@ -32,7 +32,7 @@ module.exports = {
 
   getListingById: (req, res) => {
     const db = req.app.get("db");
-    let { id } = req.query;
+    let { id } = req.params;
     id = +id;
     db.get_listing_by_id({ id })
       .then(listing => res.status(200).send(listing))

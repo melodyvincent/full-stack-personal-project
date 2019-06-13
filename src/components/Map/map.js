@@ -6,13 +6,38 @@ import {
   withGoogleMap,
   GoogleMap,
   Marker,
-  InfoWindow
+  InfoWindow,
 } from "react-google-maps";
 import map_pin_icon from "./../Images/images/map_pin_icon.png";
 import Axios from "axios";
+
 const {
   StandaloneSearchBox
 } = require("react-google-maps/lib/components/places/StandaloneSearchBox");
+
+// var INITAL_LOCATION = {
+//   address: 'Lehi, UT',
+//   position: {
+//     lat: 40.362466,
+//     lng: -111.978684
+//   }
+// };
+
+// var INITIAL_MAP_LEVEL = 8;
+  
+// var ATLANTIC_OCEAN = {
+//   latitude: 29.532804,
+//   longitude: -55.491477
+// };
+
+// var Application = React.createClass({
+//   getInitialState: function() {
+//     return{
+//       isGeocodingError: false,
+//       foundAddress: INITIAL_LOCATION.address
+//     }
+//   }
+// })
 
 class Map extends Component {
   constructor() {
@@ -29,35 +54,7 @@ class Map extends Component {
       listings: []
     };
   }
-//   Axios.post("/", middleware.isLoggedIn, function(req, res, next){
 
-//     // create a newListings object with the data available to us on post
-
-//     var newListings = {
-//         acres: req.body.acres,
-//         rooms: req.body.rooms,
-//         name: req.body.name,
-//         (etc, width the remaning fields)
-//     };
-
-//     // initiate a call to geocode.  When the geocode is complete, add other fields to our newListings object
-//     geocoder.geocode(req.body.location, function (err, data) {
-//         if (data && data.results && data.results.length) { // there are some results
-//             newListings['lat'] = data.results[0].geometry.location.lat;
-//             newListings['long'] = data.results[0].geometry.location.lng;
-//             newListings['location'] = data.results[0].formatted_address;
-//         }
-
-//         // only once we have either tried and failed to process the geocode result, or succeeded and populated our newListings object, can we continue
-//         Listings.create(newListings, function(err, newlyCreated){
-//             if(err){
-//                 console.log('this2' + err);
-//             } else {
-//                 res.redirect("/listings");
-//             }
-//         });
-//     });
-// });
   componentDidMount() {
     Axios.get("/all/listings").then(res => {
       this.setState({
@@ -65,6 +62,81 @@ class Map extends Component {
       });
     });
   }
+
+  // geocodeAddress (address) {
+  //   this.geocoder.geocode({ 'address': address }, function handleResults(results, status) {
+
+  //     if (status === google.maps.GeocoderStatus.OK) {
+
+  //       this.setState({
+  //         foundAddress: results[0].formatted_address,
+  //         isGeocodingError: false
+  //       });
+
+  //       this.map.setCenter(results[0].geometry.location);
+  //       this.marker.setPosition(results[0].geometry.location);
+
+  //       return;
+  //     }
+
+  //     this.setState({
+  //       foundAddress: null,
+  //       isGeocodingError: true
+  //     });
+
+  //     this.map.setCenter({
+  //       lat: ATLANTIC_OCEAN.latitude,
+  //       lng: ATLANTIC_OCEAN.longitude
+  //     });
+
+  //     this.marker.setPosition({
+  //       lat: ATLANTIC_OCEAN.latitude,
+  //       lng: ATLANTIC_OCEAN.longitude
+  //     });
+
+  //   }.bind(this));
+  // }
+
+  // handleFormSubmit: function (submitEvent) {
+  //   submitEvent.preventDefault();
+
+  //   var address = this.searchInputElement.value;
+
+  //   this.geocodeAddress(address);
+  // }
+
+  // componentDidMount: function () {
+  //   var mapElement = this.mapElement;
+    
+  //   this.map = new google.maps.Map(mapElement, {
+  //     zoom: INITIAL_MAP_ZOOM_LEVEL,
+  //     center: {
+  //       lat: INITIAL_LOCATION.position.latitude,
+  //       lng: INITIAL_LOCATION.position.longitude
+  //     }
+  //   });
+
+  //   this.marker = new google.maps.Marker({
+  //     map: this.map,
+  //     position: {
+  //       lat: INITIAL_LOCATION.position.latitude,
+  //       lng: INITIAL_LOCATION.position.longitude
+  //     }
+  //   });
+
+  //   this.geocoder = new google.maps.Geocoder();
+  // }
+
+  //   setSearchInputElementReference: function (inputReference) {
+  //   this.searchInputElement = inputReference;
+  // }
+
+  //   setMapElementReference: function (mapElementReference) {
+  //   this.mapElement = mapElementReference;
+  // }
+
+
+
 
   mapMoved() {
     console.log("mapMoved: " + JSON.stringify(this.state.map.getCenter()));
