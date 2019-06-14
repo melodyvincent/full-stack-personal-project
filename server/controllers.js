@@ -20,7 +20,7 @@ module.exports = {
   getUserListings: (req, res) => {
     const db = req.app.get("db");
     const { id } = req.params;
-    console.log(id);
+    
     db.get_user_listings([id])
       .then(listings => {
         res.status(200).send(listings);
@@ -32,10 +32,12 @@ module.exports = {
     const db = req.app.get("db");
     let { id } = req.params;
     id = +id;
-    console.log(req.params)
+    console.log(id)
+    
     db.get_listing_by_id({ id })
       .then(listing => {
         console.log(listing)
+        
         res.status(200).send(listing)
       })
       .catch(err => res.status(500).send(console.log(err)));
@@ -358,12 +360,14 @@ module.exports = {
   },
 
   updatePayment: (req, res) => {
+    console.log('hit')
     const db = req.app.get("db");
     const { id } = req.params;
     const { cash, credit, venmo, pay_pal, apple_pay } = req.body;
+    console.log(req.body)
     db.update_payments([cash, credit, venmo, pay_pal, apple_pay, id])
-
-      .then(payments => res.status(200).send(payments))
+      
+      .then(payments => console.log(payments))
       .catch(() => res.status(500).send());
   },
 

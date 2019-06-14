@@ -68,7 +68,7 @@ class Checkout extends Component {
         listing_id: listing.id
       })
       .then(response => {
-        console.log(response);
+       
       });
   };
   updateTotal = () => {

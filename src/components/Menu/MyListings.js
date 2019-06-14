@@ -44,7 +44,7 @@ class MyListing extends Component {
     axios.get("/auth/user").then(response => {
         this.props.getUser(response.data);
       });
-    console.log(this.props)
+    
     axios.get(`/api/userlisting/${this.props.user.id}`).then(res => {
       this.setState({
         mylistings: res.data,
@@ -83,7 +83,7 @@ class MyListing extends Component {
 
   render() {
     let mappedlistings = this.state.mylistings.map((listing, i) => {
-      console.log(listing)
+      
       let pictures = this.getPicArray(listing);
       let mappedPictures = pictures.map((picture, i) => {
         return (
