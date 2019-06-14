@@ -165,7 +165,11 @@ class Listing extends Component {
                                    
                             </h3>
                             <br />
+<<<<<<< HEAD
                             <p>Hosted by {host.username}  <Link to='/messages'>
+=======
+                            <p>Hosted by {host.username}  <Link to='/Messages'>
+>>>>>>> 08cb9046f831174dfe33dcfaaff03e956d1f53ad
                                      <button>SEND EMAIL</button>
                                      </Link></p>
                             <br />

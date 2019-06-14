@@ -102,7 +102,26 @@ class Checkout extends Component {
       currentPayment: e.target.value
     });
   };
+<<<<<<< HEAD
   
+=======
+  // onToken = (token, addresses) => {
+  //   const body = {
+  //     amount: 999,
+  //     token: token
+  //   };
+  //   axios
+  //     .post("/localhost:8000", body)
+  //     .then(res => {
+  //       console.log(res);
+  //       alert("Payment Success");
+  //     })
+  //     .catch(err => {
+  //       // console.log('Payment Error: ', error);
+  //       alert("Payment Error");
+  //     });
+  // };
+>>>>>>> 08cb9046f831174dfe33dcfaaff03e956d1f53ad
 
   onToken = (token) =>{
     token.card = void 0;

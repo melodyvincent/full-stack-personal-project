@@ -362,13 +362,14 @@ module.exports = {
   },
 
   updateUser: (req, res) => {
-    const db = req.app.get("db");
-    const { id } = req.params;
-    const { username, auth_id, user_pic, email } = req.body;
-    db.update_users([username, auth_id, user_pic, email, id])
+  const db = req.app.get('db');
+  const { id } = req.params;
+  const {username, auth_id, user_pic, email} = req.body;
+  db.update_users([username, auth_id, user_pic, email, id])
 
-      .then(users => res.status(200).send(users))
-      .catch(() => res.status(500).send());
+    .then(users => res.status(200).send(users))
+    .catch(() => res.status(500).send());
+
   },
 
   //DELETE CONTROLLERS
