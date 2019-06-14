@@ -23,7 +23,6 @@ const {
 massive(CONNECTION_STRING).then(db => {
   // app.set stores info by putting it on a key:value pair
   app.set("db", db);
-
 });
 
 const app = express();
@@ -76,7 +75,7 @@ passport.use(
               profile.picture,
               profile.emails[0].value
             ]);
-            
+
             return done(null, newUser[0]);
           } else {
             return done(null, dbRes[0]);
@@ -86,9 +85,7 @@ passport.use(
         // .then(user => {
         //   return done(null, user[0]);
         // })
-        .catch(err => {
-          
-        });
+        .catch(err => {});
     }
   )
 );
@@ -126,10 +123,8 @@ app.get(
 );
 
 app.get("/auth/user", (req, res) => {
-  
   if (req.user) {
     res.status(200).send(req.user);
-    
   } else {
     res.status(401).send("Unauthorized User");
   }
@@ -137,47 +132,64 @@ app.get("/auth/user", (req, res) => {
 
 app.get("/auth/logout", (req, res) => {
   req.logOut();
+
   // this is a built in method in passport that kills the session and resets the user property
   res.redirect(process.env.FRONTEND_URL);
 });
 
 // // ---- END OF PASSPORT SETUP ----
 
+
+
+//stripe API
+app.post("/api/payment", function(req, res, next) {
+
+//convert amount to pennies
+  const amountArray = req.body.amount.toString().split("");
+  const pennies = [];
+  for (var i = 0; i < amountArray.length; i++) {
+    if (amountArray[i] === ".") {
+      if (typeof amountArray[i + 1] === "string") {
+        pennies.push(amountArray[i + 1]);
+      } else {
+        pennies.push("0");
+      }
+      if (typeof amountArray[i + 2] === "string") {
+        pennies.push(amountArray[i + 2]);
+      } else {
+        pennies.push("0");
+      }
+      break;
+    } else {
+      pennies.push(amountArray[i]);
+    }
+  }
+  const convertedAmt = parseInt(pennies.join(""));
+
+  const charge = stripe.charges.create(
+    {
+      amount: convertedAmt, // amount in cents, again
+      currency: "usd",
+      source: req.body.token.id,
+      description: "Test charge from react app"
+    },
+    function(err, charge) {
+      if (err) return res.sendStatus(500);
+      return res.sendStatus(200);
+      // if (err && err.type === 'StripeCardError') {
+      //   // The card has been declined
+      // }
+    }
+  );
+});
+//persistent user login
+app.get("/api/me", (req, res) => {
+  res.send(req.user);
+});
+
 //User
 app.get("/api/host/:id", ctrl.getHost);
-
-//stripe payment
-// const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-// const stripeChargeCallback = res => (stripeErr, stripeRes) => {
-//   if (stripeErr) {
-//     res.status(500).send({ error: stripeErr });
-//   } else {
-//     res.status(200).send({ success: stripeRes });
-//   }
-// };
-// const paymentApi = app => {
-//   app.get("/", (req, res) => {
-//     res.send({
-//       message: "Hello Stripe checkout server!",
-//       timestamp: new Date().toISOString()
-//     });
-//   });
-// app.post("/", (req, res) => {
-//     const body = {
-//       source: req.body.token.id,
-//       amount: req.body.amount,
-//       currency: "usd"
-//     };
-//     stripe.charges.create(body, stripeChargeCallback(res));
-// });
-//   return app;
-// };
-// module.exports = paymentApi;
-
-//persistent user login
-app.get('/api/me', (req, res) =>{
-res.send(req.user)
-})
+app.put('/api/users/:id', ctrl.updateUser);
 
 //Listing
 app.get("/all/listings", ctrl.allListingsDisplay);

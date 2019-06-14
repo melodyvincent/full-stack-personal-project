@@ -4,4 +4,4 @@ FROM listings
     JOIN pictures ON pictures.listing_id = listings.id
     JOIN availabilities ON availabilities.listing_id = listings.id
     JOIN payments ON payments.listing_id = listings.id
-where listings.id = ${id}
+where listings.id = ${id};

@@ -160,15 +160,18 @@ class Listing extends Component {
                         </div>
 
                         <div className='card'>
-                            <h3>About this Space</h3>
+                            <h3>About this Space 
+
+                                   
+                            </h3>
                             <br />
-                            <p>Hosted by {host.username}</p>
+                            <p>Hosted by {host.username}  <Link to='/Messages'>
+                                     <button>SEND EMAIL</button>
+                                     </Link></p>
                             <br />
                             <img src={host.user_pic} style={{ width: '50px' }} alt='' />
                             <br />
-                            <Link to='/Messages'>
-                                <button>SEND EMAIL</button>
-                            </Link>
+                            
                             
                             <br />
                             <p>About: {listing.about}</p>

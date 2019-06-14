@@ -17,7 +17,7 @@ export default function Login() {
           <img
             alt=""
             src={ezparking}
-            style={{ height: "70px", margin: "10px" }}
+            style={{ height: "70px", margin: "10px", position:'absolute', top:'50px', left:'60px'}}
           />
         </a>
       </div>

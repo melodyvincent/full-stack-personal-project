@@ -2,3 +2,4 @@ SELECT address, space_size, num_spaces, covered, lit, charging, camera, fenced, 
 FROM listings 
 JOIN features ON features.listing_id = listings.id 
 WHERE listings.id = $1;
+

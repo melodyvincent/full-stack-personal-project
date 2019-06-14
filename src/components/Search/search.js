@@ -4,6 +4,19 @@ import Nav from "../Nav/Nav";
 import axios from "axios";
 import { connect } from "react-redux";
 import { getUser } from "../../redux/reducer";
+import ReactDOM from 'react-dom'
+
+const mapStyles = {
+  map: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%'
+  }
+}
+
+
+
+
 
 class Search extends Component {
   constructor() {
@@ -11,8 +24,10 @@ class Search extends Component {
     this.state = {
       isLoading: true,
       markers: []
+
+      
     };
-  }
+
 
 //   componentDidMount() {
 //     this.props.getUser();
@@ -39,6 +54,7 @@ class Search extends Component {
   }
 
   render() {
+    const style = Object.assign({}, mapStyles.map);
   
     return (
       <div>
@@ -59,6 +75,7 @@ class Search extends Component {
                 loadingElement={<div style={{ height: `90%` }} />}
                 mapElement={<div style={{ height: `95%` }} />}
               />
+
             </div>
           </div>
         )}
@@ -71,8 +88,10 @@ function mapStateToProps(state) {
   return state;
 }
 
+
+
 export default connect(
   mapStateToProps,
   { getUser }
 )(Search);
-// export default connect(mapStateToProps)(Search);
+
