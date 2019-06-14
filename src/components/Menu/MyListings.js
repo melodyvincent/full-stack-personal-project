@@ -41,7 +41,7 @@ class MyListing extends Component {
   }
 
   componentDidMount() {
-    // this.props.getUser()
+    this.props.getUser();
     axios.get(`/api/userlisting/${this.props.user.id}`).then(res => {
       this.setState({
         mylistings: res.data,

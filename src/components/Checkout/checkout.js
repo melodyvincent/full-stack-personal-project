@@ -102,9 +102,6 @@ class Checkout extends Component {
       currentPayment: e.target.value
     });
   };
-<<<<<<< HEAD
-  
-=======
   // onToken = (token, addresses) => {
   //   const body = {
   //     amount: 999,
@@ -121,7 +118,6 @@ class Checkout extends Component {
   //       alert("Payment Error");
   //     });
   // };
->>>>>>> 08cb9046f831174dfe33dcfaaff03e956d1f53ad
 
   onToken = (token) =>{
     token.card = void 0;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Search from "./components/Search/Search";
+import Search from "./components/Search/search";
 import EditListing from "./components/Menu/EditListing";
 import Login from "./components/Login/Login";
 import Messages from "./components/Messages/Messages";
@@ -8,8 +8,8 @@ import Reservations from "./components/Reservations/Reservation";
 import MyVehicle from "./components/Menu/MyVehicle";
 import MyProfile from "./components/Menu/MyProfile";
 import MyListing from "./components/Menu/MyListings";
-import Listing from "./components/Listing/Listing";
-import Checkout from "./components/Checkout/Checkout";
+import Listing from "./components/Listing/listing";
+import Checkout from "./components/Checkout/checkout";
 import Chat from "./components/Chat/Chat";
 // import Register from "./components/Register/Register";
 // import firebase from './../src/components/Firebase/index'

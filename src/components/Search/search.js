@@ -4,23 +4,7 @@ import Nav from "../Nav/Nav";
 import axios from "axios";
 import { connect } from "react-redux";
 import { getUser } from "../../redux/reducer";
-<<<<<<< HEAD
 import ReactDOM from "react-dom";
-=======
-import ReactDOM from 'react-dom'
-
-const mapStyles = {
-  map: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%'
-  }
-}
-
-
-
-
->>>>>>> 08cb9046f831174dfe33dcfaaff03e956d1f53ad
 
 class Search extends Component {
   constructor() {
@@ -28,18 +12,18 @@ class Search extends Component {
     this.state = {
       isLoading: true,
       markers: []
-
-      
     };
-
+  }
 
   componentDidMount() {
-    // this.props.getUser();
-    // this.getListings();
+    axios.get("/auth/user").then(response => {
+      this.props.getUser(response.data);
+    });
+    this.getListings();
   }
 
   getListings() {
-    axios.get("api/listing").then(res => {
+    axios.get("api/listings").then(res => {
       this.setState({
         markers: res.data,
         isLoading: false
@@ -48,15 +32,10 @@ class Search extends Component {
   }
 
   render() {
-<<<<<<< HEAD
-=======
-    const style = Object.assign({}, mapStyles.map);
-  
->>>>>>> 08cb9046f831174dfe33dcfaaff03e956d1f53ad
+    console.log(this.state);
     return (
       <div>
-       
-        {this.state.isLoading ? (
+        {!this.state.isLoading ? (
           <div className="">
             <Nav />
             <div className="">
@@ -68,7 +47,6 @@ class Search extends Component {
                 loadingElement={<div style={{ height: `100%` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
               />
-
             </div>
           </div>
         ) : (
@@ -86,13 +64,7 @@ function mapStateToProps(state) {
   return state;
 }
 
-
-
 export default connect(
   mapStateToProps,
   { getUser }
 )(Search);
-<<<<<<< HEAD
-=======
-
->>>>>>> 08cb9046f831174dfe33dcfaaff03e956d1f53ad

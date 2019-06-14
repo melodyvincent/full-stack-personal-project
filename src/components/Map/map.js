@@ -8,18 +8,13 @@ import {
   Marker,
   InfoWindow,
   GoogleApiWrapper
-
 } from "react-google-maps";
 import map_pin_icon from "./../Images/images/map_pin_icon.png";
 import Axios from "axios";
-import CurrentLocation from '../Search/Search'
 
 const {
   StandaloneSearchBox
 } = require("react-google-maps/lib/components/places/StandaloneSearchBox");
-
-
- 
 
 class Map extends Component {
   constructor() {
@@ -38,10 +33,8 @@ class Map extends Component {
       activeMarker: {},
       selectedPlace: {}
     };
-    
   }
 
-  
   componentDidMount() {
     Axios.get("/all/listings").then(res => {
       this.setState({
@@ -55,17 +48,16 @@ class Map extends Component {
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
-    })
+    });
 
-    onClose = props =>{
-      if (this.state.showingInfoWindow) {
-        this.setState({
-          showingInfoWindow: false,
-          activeMarker: null
-        });
-      }
+  onClose = props => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
     }
-
+  };
 
   mapMoved() {
     console.log("mapMoved: " + JSON.stringify(this.state.map.getCenter()));
@@ -120,7 +112,7 @@ class Map extends Component {
     const markers = this.props.markers;
 
     const mappedListings = this.state.listings.map(listing => (
-      <div className="searchcard">
+      <div className="searchcard" key={listing.id}>
         <h1 style={{ textAlign: "center", padding: "8px 0 0 0" }}>
           Listing Info
         </h1>
@@ -187,7 +179,6 @@ class Map extends Component {
               </Marker>
             ))}
           </GoogleMap>
-      
         </div>
         {mappedListings}
       </div>
@@ -196,4 +187,3 @@ class Map extends Component {
 }
 
 export default withScriptjs(withGoogleMap(Map));
-
