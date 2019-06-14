@@ -76,15 +76,10 @@ class Checkout extends Component {
     this.setState({
       total: Math.round(price * 1.13 * 100) / 100
     });
-    // const start = moment().startOf('month').startOf('week').format('YYYY/MM/DD');
-    // const end = moment().endOf('month').endOf('week').format('YYYY/MM/DD');
+    
   };
 
-  // onDates: PropTypes.func 
-  // focusedInput: PropTypes.oneOf([START_DATE, END_DATE])
-
-  // onFocusChange: PropTypes.func
-  // minimumNights: PropTypes.number
+ 
 
 
   handleChangeStart = date => {
@@ -107,22 +102,7 @@ class Checkout extends Component {
       currentPayment: e.target.value
     });
   };
-  // onToken = (token, addresses) => {
-  //   const body = {
-  //     amount: 999,
-  //     token: token
-  //   };
-  //   axios
-  //     .post("/localhost:8000", body)
-  //     .then(res => {
-  //       console.log(res);
-  //       alert("Payment Success");
-  //     })
-  //     .catch(err => {
-  //       // console.log('Payment Error: ', error);
-  //       alert("Payment Error");
-  //     });
-  // };
+  
 
   onToken = (token) =>{
     token.card = void 0;

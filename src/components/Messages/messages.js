@@ -4,7 +4,7 @@ import axios from "axios";
 import { getUser } from "../../redux/reducer";
 import { Link } from "react-router-dom";
 
-class Chat extends Component {
+class Messages extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,20 +20,20 @@ class Chat extends Component {
     this.sendMail = this.sendMail.bind(this);
   }
 
-  componentDidMount() {
-    const { host_id } = this.props.currentListing;
+  // componentDidMount() {
+  //   const { host_id } = this.props.currentListing;
    
-    const user = this.props.getUser();
+  //   const user = this.props.getUser();
     
-    // this.setState({
-    //     logged_user_name: '',
-    //     logged_user_email: '',
+  //   this.setState({
+  //       logged_user_name: '',
+  //       logged_user_email: '',
 
-    // })
-    axios.get(`/api/host/${host_id}`).then(res => {
-      this.setState({ host: res.data[0] });
-    });
-  }
+  //   })
+  //   axios.get(`/api/host/${host_id}`).then(res => {
+  //     this.setState({ host: res.data[0] });
+  //   });
+  // }
 
   sendMail(e) {
     e.preventDefault();
@@ -127,4 +127,4 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   { getUser }
-)(Chat);
+)(Messages);

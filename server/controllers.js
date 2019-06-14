@@ -20,13 +20,11 @@ module.exports = {
   getUserListings: (req, res) => {
     const db = req.app.get("db");
     const { id } = req.params;
-
+    console.log(id);
     db.get_user_listings([id])
-    .then(listings => {
-    
-      res.status(200).send(listings) 
-
-    })
+      .then(listings => {
+        res.status(200).send(listings);
+      })
       .catch(err => res.status(500).send(console.log(err)));
   },
 
@@ -57,7 +55,7 @@ module.exports = {
   getReservations: (req, res) => {
     const db = req.app.get("db");
     const { id } = req.params;
- 
+
     db.get_reservations([id])
       .then(reservations => res.status(200).send(reservations))
       .catch(() => res.status(500).send());
@@ -125,7 +123,7 @@ module.exports = {
       guarded,
       listing_id
     } = req.body;
-    
+
     db.create_features([
       covered,
       lit,
@@ -142,7 +140,6 @@ module.exports = {
   createPictures: (req, res) => {
     const db = req.app.get("db");
     const { pic_one, pic_two, pic_three, pic_four, listing_id } = req.body;
-  
 
     db.create_pictures([pic_one, pic_two, pic_three, pic_four, listing_id])
       .then(pictures => res.status(200).send(pictures))
@@ -186,7 +183,6 @@ module.exports = {
       sunday,
       listing_id
     } = req.body;
-
 
     db.create_availability([
       monday,
@@ -232,7 +228,6 @@ module.exports = {
   createPayment: (req, res) => {
     const db = req.app.get("db");
     const { cash, credit, venmo, pay_pal, apple_pay, listing_id } = req.body;
-    
 
     db.create_payments([cash, credit, venmo, pay_pal, apple_pay, listing_id])
       .then(() => res.status(200).send())
@@ -240,8 +235,6 @@ module.exports = {
   },
   // Added for nodemailer
   createMail: (req, res) => {
-    
-
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -260,7 +253,6 @@ module.exports = {
     };
     transporter.sendMail(mailOptions, function(error, info) {
       if (error) {
-        
       } else {
         console.log("Email sent: " + info.response);
       }
@@ -277,7 +269,6 @@ module.exports = {
     db.update_features([covered, lit, charging, camera, fenced, guarded, id])
       .then(() => res.status(200).send())
       .catch(err => {
-        
         res.status(500).send();
       });
   },
@@ -296,7 +287,6 @@ module.exports = {
       instructions,
       price
     } = req.body;
-    
 
     db.update_listings([
       address,
@@ -348,7 +338,6 @@ module.exports = {
     ])
       .then(() => res.status(200).send())
       .catch(err => {
-      
         res.status(500).send();
       });
   },
@@ -373,21 +362,20 @@ module.exports = {
   },
 
   updateUser: (req, res) => {
-  const db = req.app.get('db');
-  const { id } = req.params;
-  const {username, auth_id, user_pic, email} = req.body;
-  db.update_users([username, auth_id, user_pic, email, id])
+    const db = req.app.get("db");
+    const { id } = req.params;
+    const { username, auth_id, user_pic, email } = req.body;
+    db.update_users([username, auth_id, user_pic, email, id])
 
-    .then(users => res.status(200).send(users))
-    .catch(() => res.status(500).send());
-
+      .then(users => res.status(200).send(users))
+      .catch(() => res.status(500).send());
   },
 
   //DELETE CONTROLLERS
   deleteListing: (req, res) => {
     const db = req.app.get("db");
     const { id } = req.params;
-    console.log(id)
+    console.log(id);
 
     db.delete_listing([id])
       .then(() => res.status(200).send())
