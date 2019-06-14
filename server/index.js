@@ -69,23 +69,18 @@ passport.use(
         .then(dbRes => {
           // check to make sure the user exists
           if (dbRes.length === 0) {
-            let newUser = db.create_user([
+            console.log("new user hit");
+            return db.create_user([
               profile.displayName,
               profile.id,
               profile.picture,
               profile.emails[0].value
             ]);
-
-            return done(null, newUser[0]);
-          } else {
-            return done(null, dbRes[0]);
           }
-          // if the user is found, return that user
+          console.log("user found");
+          return done(null, dbRes[0]);
         })
-        // .then(user => {
-        //   return done(null, user[0]);
-        // })
-        .catch(err => {});
+        .catch(err => console.log(err.message));
     }
   )
 );
@@ -139,8 +134,6 @@ app.get("/auth/logout", (req, res) => {
 
 // // ---- END OF PASSPORT SETUP ----
 
-
-
 //stripe API
 // app.post("/api/payment", function(req, res, next) {
 
@@ -189,7 +182,7 @@ app.get("/api/me", (req, res) => {
 
 //User
 app.get("/api/host/:id", ctrl.getHost);
-app.put('/api/users/:id', ctrl.updateUser);
+app.put("/api/users/:id", ctrl.updateUser);
 
 //Listing
 app.get("/all/listings", ctrl.allListingsDisplay);
