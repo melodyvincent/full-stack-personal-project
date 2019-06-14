@@ -32,8 +32,12 @@ module.exports = {
     const db = req.app.get("db");
     let { id } = req.params;
     id = +id;
+    console.log(req.params)
     db.get_listing_by_id({ id })
-      .then(listing => res.status(200).send(listing))
+      .then(listing => {
+        console.log(listing)
+        res.status(200).send(listing)
+      })
       .catch(err => res.status(500).send(console.log(err)));
   },
   getListingPreview: (req, res) => {
@@ -108,7 +112,9 @@ module.exports = {
       lat,
       lng
     ])
-      .then(listing => res.status(200).send(listing))
+      .then(listing => {
+        res.status(200).send(listing)
+      })
       .catch(err => res.status(500).send(console.log(err)));
   },
 
@@ -376,7 +382,7 @@ module.exports = {
   deleteListing: (req, res) => {
     const db = req.app.get("db");
     const { id } = req.params;
-    console.log(id);
+    
 
     db.delete_listing([id])
       .then(() => res.status(200).send())

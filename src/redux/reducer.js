@@ -86,6 +86,7 @@ const UPDATE_WIZ_PIC_FOUR = "UPDATE_WIZ_PIC_FOUR";
 const UPDATE_MYPROFILE = "UPDATE_MYPROFILE"
 
 export default function reducer(state = initialState, action) {
+  console.log('redux', action)
   switch (action.type) {
     case GET_USER_DATA:
       return { ...state, user: action.payload };

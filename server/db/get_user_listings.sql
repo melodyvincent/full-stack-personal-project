@@ -43,6 +43,7 @@ select features.covered,
     listings.about,
     listings.instructions,
     listings.price,
+    listings.id,
     listings.host_id
 from features
     join listings on features.listing_id = listings.id

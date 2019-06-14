@@ -41,7 +41,10 @@ class MyListing extends Component {
   }
 
   componentDidMount() {
-    this.props.getUser();
+    axios.get("/auth/user").then(response => {
+        this.props.getUser(response.data);
+      });
+    console.log(this.props)
     axios.get(`/api/userlisting/${this.props.user.id}`).then(res => {
       this.setState({
         mylistings: res.data,
@@ -80,7 +83,7 @@ class MyListing extends Component {
 
   render() {
     let mappedlistings = this.state.mylistings.map((listing, i) => {
-      console.log(listing);
+      console.log(listing)
       let pictures = this.getPicArray(listing);
       let mappedPictures = pictures.map((picture, i) => {
         return (
@@ -247,7 +250,7 @@ class MyListing extends Component {
               alt=""
               src={delete_icon}
               onClick={() => {
-                this.handleListingDelete(listing.listing_id);
+                this.handleListingDelete(listing.id);
               }}
             />
             <br />

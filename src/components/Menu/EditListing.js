@@ -54,8 +54,8 @@ class EditListing extends Component {
     Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
     Geocode.enableDebug();
 
-    axios.get(`/api/listing/${this.props.match.params.id}`).then(res => {
-      
+    axios.get(`/api/listings/${this.props.match.params.id}`).then(res => {
+      console.log(res.data)
       this.setState({
         address: res.data[0].address || null,
         buildingType: res.data[0].building_type,
@@ -97,7 +97,7 @@ class EditListing extends Component {
     //     const { lat, lng } = response.results[0].geometry.location;
 
         axios
-          .put(`/api/listing/${this.props.match.params.id}`, {
+          .put(`/api/listings/${this.props.match.params.id}`, {
             address: this.state.address,
             // // lat: lat,
             // lng: lng,
@@ -210,7 +210,7 @@ class EditListing extends Component {
                 display: "grid",
                 gridTemplateColumns: "100px 100px",
                 width: "300px",
-                justifyContent: "center"
+                justifyContent: "space-evenly"
               }}
             >
               <div style={{ height: "100px", width: "100px" }}>

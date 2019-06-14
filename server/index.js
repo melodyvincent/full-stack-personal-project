@@ -69,7 +69,7 @@ passport.use(
         .then(dbRes => {
           // check to make sure the user exists
           if (dbRes.length === 0) {
-            console.log("new user hit");
+           
             return db.create_user([
               profile.displayName,
               profile.id,
@@ -77,7 +77,7 @@ passport.use(
               profile.emails[0].value
             ]);
           }
-          console.log("user found");
+          
           return done(null, dbRes[0]);
         })
         .catch(err => console.log(err.message));
@@ -134,47 +134,7 @@ app.get("/auth/logout", (req, res) => {
 
 // // ---- END OF PASSPORT SETUP ----
 
-//stripe API
-// app.post("/api/payment", function(req, res, next) {
 
-//convert amount to pennies
-//   const amountArray = req.body.amount.toString().split("");
-//   const pennies = [];
-//   for (var i = 0; i < amountArray.length; i++) {
-//     if (amountArray[i] === ".") {
-//       if (typeof amountArray[i + 1] === "string") {
-//         pennies.push(amountArray[i + 1]);
-//       } else {
-//         pennies.push("0");
-//       }
-//       if (typeof amountArray[i + 2] === "string") {
-//         pennies.push(amountArray[i + 2]);
-//       } else {
-//         pennies.push("0");
-//       }
-//       break;
-//     } else {
-//       pennies.push(amountArray[i]);
-//     }
-//   }
-//   const convertedAmt = parseInt(pennies.join(""));
-
-//   const charge = stripe.charges.create(
-//     {
-//       amount: convertedAmt, // amount in cents, again
-//       currency: "usd",
-//       source: req.body.token.id,
-//       description: "Test charge from react app"
-//     },
-//     function(err, charge) {
-//       if (err) return res.sendStatus(500);
-//       return res.sendStatus(200);
-//       // if (err && err.type === 'StripeCardError') {
-//       //   // The card has been declined
-//       // }
-//     }
-//   );
-// });
 //persistent user login
 app.get("/api/me", (req, res) => {
   res.send(req.user);
@@ -187,11 +147,11 @@ app.put("/api/users/:id", ctrl.updateUser);
 //Listing
 app.get("/all/listings", ctrl.allListingsDisplay);
 app.get("/api/listings", ctrl.getAllListings);
-app.get("/api/listing/:id", ctrl.getListingById);
+app.get("/api/listings/:id", ctrl.getListingById);
 app.get("/api/userlisting/:id", ctrl.getUserListings);
 app.get("/api/preview/:id", ctrl.getListingPreview);
 app.post("/api/listing", ctrl.createListing);
-app.put("/api/listing/:id", ctrl.updateListing);
+app.put("/api/listings/:id", ctrl.updateListing);
 app.delete("/api/listing/:id", ctrl.deleteListing);
 
 //Features
