@@ -3,11 +3,10 @@ const nodemailer = require("nodemailer");
 
 module.exports = {
   getAllListings: (req, res) => {
-    const db = req.app.get("db");
-
+    const db = req.app.get("db")
     db.get_all_listings()
-      .then(listings => res.status(200).send(listings))
-      .catch(err => res.status(500).send(console.log(err)));
+    .then(listings => res.status(200).send(listings))
+    .catch(err => res.status(500).send(console.log(err)));
   },
 
   allListingsDisplay: (req, res) => {
@@ -32,11 +31,11 @@ module.exports = {
     const db = req.app.get("db");
     let { id } = req.params;
     id = +id;
-    console.log(id)
+   
     
     db.get_listing_by_id({ id })
       .then(listing => {
-        console.log(listing)
+        
         
         res.status(200).send(listing)
       })
@@ -360,11 +359,11 @@ module.exports = {
   },
 
   updatePayment: (req, res) => {
-    console.log('hit')
+  
     const db = req.app.get("db");
     const { id } = req.params;
     const { cash, credit, venmo, pay_pal, apple_pay } = req.body;
-    console.log(req.body)
+   
     db.update_payments([cash, credit, venmo, pay_pal, apple_pay, id])
       
       .then(payments => console.log(payments))

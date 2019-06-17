@@ -121,7 +121,7 @@ class Checkout extends Component {
 
   onToken = (token) =>{
     token.card = void 0;
-    axios.post('/api/payment', {token, amount: 100}).then(response =>{
+    axios.post('/api/payment', {token, amount: this.state.total}).then(response =>{
     alert('we are in business')
   });
   }
@@ -176,6 +176,7 @@ class Checkout extends Component {
     );
   };
   render() {
+    console.log(this.state.listing)
     
     const {
       address,
