@@ -65,6 +65,13 @@ module.exports = {
       .then(reservations => res.status(200).send(reservations))
       .catch(() => res.status(500).send());
   },
+
+  getReservationsById: (req, res) =>{
+    const db=req.app.get('db');
+    let { id } = req.params;
+    id = +id;
+  },
+  
   getVehicles: (req, res) => {
     const db = req.app.get("db");
     const { id } = req.params;
@@ -154,6 +161,7 @@ module.exports = {
   },
 
   createReservation: (req, res) => {
+    console.log(req.body)
     const db = req.app.get("db");
     const {
       user_id,

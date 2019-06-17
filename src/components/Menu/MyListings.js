@@ -45,7 +45,7 @@ class MyListing extends Component {
         this.props.getUser(response.data);
       });
     
-    axios.get(`/api/userlisting/${this.props.user.id}`).then(res => {
+    axios.get(`/api/userlistings/${this.props.user.id}`).then(res => {
       this.setState({
         mylistings: res.data,
         isLoading: false
@@ -264,6 +264,7 @@ class MyListing extends Component {
         {!this.state.isLoading ? (
           <div>
             <Nav />
+            {/* <div className='card'> */}
             <div className="reset">
               <Link to="/wizard0">
                 <button className="bigbutton">Add a Listing</button>
@@ -271,6 +272,7 @@ class MyListing extends Component {
               <br />
               {mappedlistings}
             </div>
+            {/* </div> */}
           </div>
         ) : (
           <div>

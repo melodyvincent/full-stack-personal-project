@@ -208,8 +208,9 @@ app.put("/api/vehicle/:id", ctrl.updateVehicle);
 app.delete("/api/vehicle/:id", ctrl.deleteVehicle);
 
 //Reservations
-app.post("/api/reservation/:id", ctrl.getReservations);
-app.get("/api/reservations", ctrl.createReservation);
+app.post("/api/reservation/:id", ctrl.createReservation);
+app.get("/api/reservations", ctrl.getReservations);
+app.get('api/reservation/:id', ctrl.getListingById)
 app.delete("/api/reservation/:id", ctrl.deleteReservation);
 
 // Availability

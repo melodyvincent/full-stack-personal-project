@@ -22,6 +22,10 @@ features.camera,
 features.fenced,
 features.guarded,
 listings.price,
+listings.address,
+listings.num_spaces,
+listings.space_size,
+
 listings.id
 FROM listings
 JOIN features ON features.listing_id = listings.id

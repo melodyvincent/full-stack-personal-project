@@ -26,10 +26,10 @@ class Checkout extends Component {
       currentVehicle: "select",
       currentPayment: "select",
       paymentArray: [],
-      // startDate: momentPropTypes.momentObj,
-      // endDate: momentPropTypes.momentObj,
-      startDate: new Date(),
-      // // endDate: "",
+      date: null,
+      startDate: "",
+      endDate: "",
+      // focused: null,
       total: null
     };
   }
@@ -61,26 +61,20 @@ class Checkout extends Component {
       .post(`/api/reservation/${user.id}`, {
         user_id: user.id,
         vehicle_id: this.state.currentVehicle,
-        start_time: `${this.state.startDate._d}`.substring(0, 15),
-        // end_time: `${this.state.endDate._d}`.substring(0,15),
+        start_time: this.state.startDate,
+        end_time: this.state.endDate,
         payment_type: this.state.currentPayment,
         total: total,
         listing_id: listing.id
       })
-      .then(response => {
-       
-      });
+      .then(response => {});
   };
   updateTotal = () => {
     const { price } = this.state.listing;
     this.setState({
       total: Math.round(price * 1.13 * 100) / 100
     });
-    
   };
-
- 
-
 
   handleChangeStart = date => {
     this.setState({
@@ -102,29 +96,15 @@ class Checkout extends Component {
       currentPayment: e.target.value
     });
   };
-  // onToken = (token, addresses) => {
-  //   const body = {
-  //     amount: 999,
-  //     token: token
-  //   };
-  //   axios
-  //     .post("/localhost:8000", body)
-  //     .then(res => {
-  //       console.log(res);
-  //       alert("Payment Success");
-  //     })
-  //     .catch(err => {
-  //       // console.log('Payment Error: ', error);
-  //       alert("Payment Error");
-  //     });
-  // };
 
-  onToken = (token) =>{
+  onToken = token => {
     token.card = void 0;
-    axios.post('/api/payment', {token, amount: this.state.total}).then(response =>{
-    alert('we are in business')
-  });
-  }
+    axios
+      .post("/api/payment", { token, amount: this.state.total })
+      .then(response => {
+        alert("we are in business");
+      });
+  };
 
   isAvailable = date => {
     const {
@@ -176,8 +156,8 @@ class Checkout extends Component {
     );
   };
   render() {
-    console.log(this.state.listing)
-    
+    console.log(this.state.listing);
+
     const {
       address,
       apple_pay,
@@ -227,25 +207,11 @@ class Checkout extends Component {
               <h1>Schedule</h1>
               <hr />
 
-              {/* <DateRangePicker
-                startDate={this.state.startDate} // momentPropTypes.momentObj or null,
-                startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-                endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                onDatesChange={({ startDate, endDate }) =>
-                  this.setState({ startDate, endDate })
-                } // PropTypes.func.isRequired,
-                focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
-              />  */}
-
-
               <DatePicker
-          
-                Text="Click to select a start date"
+                placeholderText="Click to select a start date"
                 selected={this.state.startDate}
-                onChange={this.handleChangeEnd}
-                dateFormat="LLL"
+                onChange={this.handleChangeStart}
+                // dateFormat="MM-DD-YYYY"
                 timeCaption="time"
                 maxDate={moment().add(5, "months")}
                 showTimeSelect
@@ -253,39 +219,18 @@ class Checkout extends Component {
                 timeIntervals={15}
                 todayButton={"TODAY"}
               />
-              {/* <DatePicker
-                                placeholderText='Click to select an end date'
-                                selected={this.state.endDate}
-                                onChange={this.handleChange}
-                                dateFormat='LLL'
-                                timeCaption='time'
-                            maxDate={moment().add(5, 'months')}
-                                showTimeSelect
-                                timeFormat='HH:mm'
-                                timeIntervals={15}
-                                todayButton={"TODAY"}
-                            /> */}
-
-              {/* <DatePicker
-                                className='dropdownselect'
-                                selected={this.state.startDate}
-                                selectsStart
-                                startDate={this.state.startDate}
-                                endDate={this.state.endDate}
-                                onChange={this.handleChangeStart}
-                                filterDate={this.isAvailable}
-                                minDate={moment()}
-                            />
-                            { <DatePicker
-                                className='dropdownselect'
-                                selected={this.state.endDate}
-                                selectsEnd
-                                startDate={this.state.startDate}
-                                endDate={this.state.endDate}
-                                onChange={this.handleChangeEnd}
-                                filterDate={this.isAvailable}
-                                minDate={moment()}
-                            />  } */}
+              <DatePicker
+                placeholderText="Click to select an end date"
+                selected={this.state.endDate}
+                onChange={this.handleChangeEnd}
+                // dateFormat="LLL"
+                timeCaption="time"
+                maxDate={moment().add(5, "months")}
+                showTimeSelect
+                timeFormat="HH:mm"
+                timeIntervals={15}
+                // todayButton={"TODAY"}
+              />
             </div>
             <div className="card">
               <h1 style={{ textAlign: "center" }}>Payments</h1>
