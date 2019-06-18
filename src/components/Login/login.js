@@ -1,8 +1,9 @@
 import React from "react";
 import "./../../animate.css";
-import ezparking from "./../Images/images/parking.png";
+import ezcarpark from "./../Images/images/parking.png";
 import { Link } from "react-router-dom";
 
+console.log(1111111, process.env.REACT_APP_LOGIN);
 export default function Login() {
   return (
     <div>
@@ -10,14 +11,19 @@ export default function Login() {
         <a
           id="loginanimation"
           className="login animated slideOutDown"
-              // href="http://localhost:4000/auth/callback"
-          href="http://localhost:4000/auth/google"
-             
+          // href="http://localhost:4000/auth/callback"
+          href={process.env.REACT_APP_LOGIN}
         >
           <img
             alt=""
-            src={ezparking}
-            style={{ height: "70px", margin: "10px", position:'absolute', top:'50px', left:'60px'}}
+            src={ezcarpark}
+            style={{
+              height: "70px",
+              margin: "10px",
+              position: "absolute",
+              top: "50px",
+              left: "60px"
+            }}
           />
         </a>
       </div>

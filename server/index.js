@@ -26,6 +26,8 @@ massive(CONNECTION_STRING).then(db => {
   app.set("db", db);
 });
 
+// app.use( express.static( `${__dirname}/../build` ) );
+
 const app = express();
 app.use(express.static(`${__dirname}/../build`));
 app.use(bodyParser.json());
