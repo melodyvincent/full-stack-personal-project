@@ -3,7 +3,7 @@ import "./../../animate.css";
 import ezcarpark from "./../Images/images/parking.png";
 import { Link } from "react-router-dom";
 
-console.log(1111111, process.env.REACT_APP_LOGIN);
+
 export default function Login() {
   return (
     <div>

@@ -17,7 +17,8 @@ const {
   AUTH0_CLIENTID,
   AUTH0_CLIENTSECRET,
   CALLBACK_URL,
-  CONNECTION_STRING
+  CONNECTION_STRING,
+  SERVER_PORT
 } = process.env;
 
 massive(CONNECTION_STRING).then(db => {
@@ -42,12 +43,12 @@ app.use(
 app.use(bodyParser.json());
 //stripe
 app.use(cors());
-app.post('/api/payment', function(req, res, next){
+app.post("/api/payment", function(req, res, next) {
   //convert amount to pennies
-  const amountArray = req.body.amount.toString().split('');
+  const amountArray = req.body.amount.toString().split("");
   const pennies = [];
   for (var i = 0; i < amountArray.length; i++) {
-    if(amountArray[i] === ".") {
+    if (amountArray[i] === ".") {
       if (typeof amountArray[i + 1] === "string") {
         pennies.push(amountArray[i + 1]);
       } else {
@@ -58,25 +59,28 @@ app.post('/api/payment', function(req, res, next){
       } else {
         pennies.push("0");
       }
-    	break;
+      break;
     } else {
-    	pennies.push(amountArray[i])
+      pennies.push(amountArray[i]);
     }
   }
-  const convertedAmt = parseInt(pennies.join(''));
+  const convertedAmt = parseInt(pennies.join(""));
 
-  const charge = stripe.charges.create({
-  amount: convertedAmt, // amount in cents, again
-  currency: 'usd',
-  source: req.body.token.id,
-  description: 'Test charge from react app'
-}, function(err, charge) {
-    if (err) return res.sendStatus(500)
-    return res.sendStatus(200);
-  // if (err && err.type === 'StripeCardError') {
-  //   // The card has been declined
-  // }
-});
+  const charge = stripe.charges.create(
+    {
+      amount: convertedAmt, // amount in cents, again
+      currency: "usd",
+      source: req.body.token.id,
+      description: "Test charge from react app"
+    },
+    function(err, charge) {
+      if (err) return res.sendStatus(500);
+      return res.sendStatus(200);
+      // if (err && err.type === 'StripeCardError') {
+      //   // The card has been declined
+      // }
+    }
+  );
 });
 
 // const configureRoutes = require("./routes")
@@ -109,7 +113,6 @@ passport.use(
         .then(dbRes => {
           // check to make sure the user exists
           if (dbRes.length === 0) {
-           
             return db.create_user([
               profile.displayName,
               profile.id,
@@ -117,7 +120,7 @@ passport.use(
               profile.emails[0].value
             ]);
           }
-          
+
           return done(null, dbRes[0]);
         })
         .catch(err => console.log(err.message));
@@ -174,7 +177,6 @@ app.get("/auth/logout", (req, res) => {
 
 // // ---- END OF PASSPORT SETUP ----
 
-
 //persistent user login
 app.get("/api/me", (req, res) => {
   res.send(req.user);
@@ -212,7 +214,7 @@ app.delete("/api/vehicle/:id", ctrl.deleteVehicle);
 //Reservations
 app.post("/api/reservation/:id", ctrl.createReservation);
 app.get("/api/reservations", ctrl.getReservations);
-app.get('api/reservation/:id', ctrl.getListingById)
+app.get("api/reservation/:id", ctrl.getListingById);
 app.delete("/api/reservation/:id", ctrl.deleteReservation);
 
 // Availability
@@ -226,9 +228,8 @@ app.put("/api/payment/:id", ctrl.updatePayment);
 // Nodemailer Send
 app.post("/api/sendmail", ctrl.createMail);
 
-const port = 4000;
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+app.listen(SERVER_PORT, () => {
+  console.log(`Server listening on port ${SERVER_PORT}`);
 });
 
 // app.use(passport.initialize());
